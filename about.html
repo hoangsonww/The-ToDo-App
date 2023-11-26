@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ToDo App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #c9dfff;
+            color: #444;
+            font-family: "Poppins", sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: rgb(255, 0, 233);
+            font-size: 3rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .about-section {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .back-button {
+            padding: 10px 20px;
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: "Poppins", sans-serif;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .back-button:hover {
+            background-color: #367c39; /* Darker green on hover */
+            transform: translateY(-2px) translateX(-50%); /* Slight raise on hover */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>The ToDo App</h1>
+</header>
+
+<section class="about-section">
+    <p>
+        The ToDo App is a simple, user-friendly application designed to help you manage your daily tasks effectively.
+        It allows you to add, edit, and organize your tasks with ease.
+    </p>
+    <p>
+        Created by David Nguyen in 2023, the app incorporates modern design with functionality, providing a seamless experience for users of all ages.
+    </p>
+</section>
+
+<button onclick="window.location.href='index.html';" class="back-button">Back to Main Page</button>
+
+<footer>
+    <p>© 2023 David Nguyen. All rights reserved.</p>
+</footer>
+</body>
+</html>

@@ -94,6 +94,7 @@ function addTodo(todo) {
         const trashCan = document.createElement("span");
         trashCan.innerHTML = '&#128465;'; // Unicode for the trash can icon
         trashCan.className = 'trash-can';
+        trashCan.title = 'Delete Todo';
         trashCan.addEventListener('click', function() {
             todoEl.remove();
             updateLS();
@@ -241,47 +242,53 @@ function getElizaResponse(question) {
 
     const responses = [
         { pattern: /hello|hi|hey/, response: "Hello! How can I assist you today?" },
-        { pattern: /how does this app work/, response: "This app allows you to create, edit, and manage sticky notes." },
-        { pattern: /who created this app/, response: "The app was created by David Nguyen in 2023." },
-        { pattern: /thank you|thanks/, response: "You're welcome! If you have more questions, just ask." },
-        { pattern: /dark mode/, response: "Click the 'Toggle Dark Mode' button to switch between themes." },
-        { pattern: /export notes/, response: "You can export your notes by clicking the 'Export Notes' button. It'll save as a JSON file." },
-        { pattern: /import notes/, response: "Click on the 'Choose Files' button to select and upload your notes." },
-        { pattern: /how are you/, response: "I'm a computer program, so I don't have feelings, but I'm operating at full capacity. How can I help?" },
-        { pattern: /what can you do/, response: "I'm here to answer your questions about the app. Just ask away!" },
-        { pattern: /create note|new note/, response: "To create a new note, click on the 'New Note' button and start typing." },
-        { pattern: /delete note/, response: "You can delete a note by selecting it and clicking the 'Delete' button." },
-        { pattern: /edit note/, response: "Simply click on a note to start editing its content." },
-        { pattern: /save note/, response: "Your notes are saved automatically once you stop typing." },
-        { pattern: /lost note|recover note/, response: "If you've exported your notes previously, you can re-import them. Otherwise, deleted notes cannot be recovered." },
-        { pattern: /how many notes/, response: "You can have as many notes as you like in the app. There's no set limit!" },
-        { pattern: /search note/, response: "Use the search bar at the top of the app to find specific notes by their content." },
-        { pattern: /shortcut|keyboard shortcut/, response: "Use 'Ctrl + N' for a new note, 'Ctrl + S' to save, and 'Ctrl + D' to delete a note." },
-        { pattern: /share note/, response: "Currently, this app doesn't support direct note sharing. You can export and send the JSON file manually." },
-        { pattern: /cloud|sync/, response: "We don't have cloud syncing at the moment, but it's a feature we're considering for future versions." },
-        { pattern: /security|privacy/, response: "Your notes are stored locally on your device. We don't access or store them on any external servers." },
-        { pattern: /can i customize/, response: "At the moment, customization is limited to dark and light themes. We're working on more personalization features!" },
-        { pattern: /feedback|suggestion/, response: "We appreciate feedback and suggestions! There's a 'Feedback' button in the settings where you can submit yours." },
-        { pattern: /language|translate/, response: "Currently, the app is in English only, but multi-language support is in our roadmap." },
-        { pattern: /update|new version/, response: "Keep an eye on the 'Updates' section in settings for any new versions or features." },
-        { pattern: /bug|issue/, response: "Sorry for the inconvenience. Please report any bugs through the 'Feedback' section so we can address them." },
-        { pattern: /cost|price/, response: "The basic version of the app is free, but there might be premium features available for purchase in the future." },
-        { pattern: /tutorial|guide/, response: "There's a 'Help' section in the app that provides a step-by-step guide on how to use the various features." },
-        { pattern: /favorite note|bookmark/, response: "You can 'star' or mark your favorite notes to easily find them later in the 'Favorites' section." },
-        { pattern: /search notes/, response: "You can use the search bar at the top to quickly find any note by its content or title." },
-        { pattern: /collaborate|team/, response: "The current version doesn't support real-time collaboration. It's a feature we might consider in the future." },
-        { pattern: /notification|alert/, response: "You can set reminders for your notes. Once set, you'll receive notifications at the specified time." },
-        { pattern: /voice command|voice activation/, response: "Voice commands are not supported currently, but it's an interesting idea for future versions!" },
-        { pattern: /offline/, response: "Yes, the app works offline. Any changes you make will be synced when you go online next." },
-        { pattern: /backup/, response: "It's a good practice to regularly export and back up your notes. This ensures you don't lose any important information." },
-        { pattern: /limit|maximum notes/, response: "There's no set limit to the number of notes you can create. However, device storage can be a limiting factor." },
-        { pattern: /tags|categories/, response: "Yes, you can categorize your notes using tags. This helps in organizing and quickly accessing related notes." },
-        { pattern: /mobile|tablet/, response: "The app is optimized for both desktop and mobile devices. You'll have a seamless experience across all devices." },
-        { pattern: /attachment|image/, response: "You can attach images or files to your notes. Just click on the 'Add Attachment' button when editing a note." },
-        { pattern: /lost notes|recovery/, response: "If you've exported and backed up your notes, you can easily recover them using the import function." },
-        { pattern: /fonts|text style/, response: "While the current version offers a standard font, we're considering font customization options in the future." },
-        { pattern: /printing/, response: "Yes, you can print your notes directly from the app. Just open the note and click on the 'Print' option." },
-        { pattern: /create note titled (.*) with content (.*)/, response: "Creating note titled '{title}' with content '{content}'..." },
+        { pattern: /add todo|new todo/, response: "To add a new todo, type in the task and due date, then press Enter or click the Add button." },
+        { pattern: /edit todo/, response: "Click the edit icon next to a todo to modify its text and due date." },
+        { pattern: /complete todo/, response: "Click on a todo to mark it as complete. Completed tasks will have a line through them." },
+        { pattern: /delete todo/, response: "Click the trash can icon next to a todo to delete it." },
+        { pattern: /prioritize todo/, response: "Ctrl+Click on a todo to mark it as high priority. High priority tasks are highlighted." },
+        { pattern: /sort todos/, response: "Click the Sort button to arrange todos by their due dates, with the closest dates first." },
+        { pattern: /how to use the app/, response: "It's simple! Add a todo with the text field, set a due date, and then you can edit, prioritize, or delete it as needed." },
+        { pattern: /can i set reminders/, response: "While the app currently doesn't have reminder alerts, you can sort todos by due date to keep track of upcoming tasks." },
+        { pattern: /change theme/, response: "Currently, the app has a light and refreshing theme that's easy on the eyes, perfect for managing your todos!" },
+        { pattern: /undo delete/, response: "Once a todo is deleted, it can't be undone. Make sure you want to remove it before using the delete option." },
+        { pattern: /organize todos/, response: "You can organize your todos by due date using the sort feature or prioritize them with a Ctrl+Click." },
+        { pattern: /find a todo/, response: "To find a specific todo, simply browse through your list or use the sort feature to arrange them." },
+        { pattern: /are todos saved/, response: "All your todos are saved locally on your device, so you won't lose them even if you close the app." },
+        { pattern: /export todos/, response: "You can keep a backup of your todos by using the Export feature, which saves them as a JSON file." },
+        { pattern: /import todos/, response: "If you have a JSON file of todos, you can import it back into the app using the Import feature." },
+        { pattern: /sync todos/, response: "Currently, there's no sync feature, but your todos are saved locally and available whenever you need them." },
+        { pattern: /clear all todos/, response: "To clear all your todos, you'll have to manually delete them one by one for now." },
+        { pattern: /app not working/, response: "If the app isn't working, try refreshing the page. If the issue persists, check for updates or report a bug." },
+        { pattern: /report a bug/, response: "Found a bug? Let's squash it! Please report it with details so it can be addressed in future updates." },
+        { pattern: /update the app/, response: "Updates are rolled out periodically. Stay tuned for new features and improvements!" },
+        { pattern: /make a suggestion/, response: "Your suggestions are valuable! Feel free to share your ideas for new features or improvements." },
+        { pattern: /help with the app/, response: "Need help? Check out the Help section for a guide on using the app, or ask me if you have specific questions." },
+        { pattern: /what's new in the app/, response: "We're always improving. Check the 'What's New' section in the settings for the latest features!" },
+        { pattern: /forgot my task/, response: "If you've forgotten a task, try looking through the list or sorting by due date for a reminder." },
+        { pattern: /color code todos/, response: "Color coding isn't available yet, but you can prioritize tasks to make them stand out." },
+        { pattern: /print my todos/, response: "Sure, you can print your todos. Just use the Print option in your browser while on the app page." },
+        { pattern: /change font size/, response: "Font size customization is in the works. Stay tuned for this feature in upcoming updates!" },
+        { pattern: /add notes to todos/, response: "Adding notes to your todos is a planned feature. Look out for it in future releases!" },
+        { pattern: /recurring todos/, response: "Recurring todos are a great idea! We're considering adding this in a future update." },
+        { pattern: /backup my todos/, response: "It's smart to back up! Use the Export option to save your todos externally." },
+        { pattern: /where is my data stored/, response: "Your data is stored locally on your device for your privacy and convenience." },
+        { pattern: /access todos on another device/, response: "Currently, there's no cross-device functionality, but we're exploring cloud sync options." },
+        { pattern: /customize app appearance/, response: "Customization options are limited now, but we plan to offer more ways to personalize your app experience soon." },
+        { pattern: /set deadlines/, response: "You can set a due date for each todo to keep track of deadlines." },
+        { pattern: /app is slow/, response: "If the app is running slow, try clearing your browser cache or restarting the app." },
+        { pattern: /can't add todo/, response: "If you're having trouble adding a todo, make sure you're entering text before hitting the Add button." },
+        { pattern: /edit multiple todos/, response: "Batch editing isn't available yet, but it's something we might consider for the future." },
+        { pattern: /change task order/, response: "To reorder tasks, you currently need to sort them by due date or manually adjust them." },
+        { pattern: /completed todos/, response: "Completed todos are marked and can be sorted to the bottom or top of your list for better organization." },
+        { pattern: /secure my todos/, response: "Your todos are stored securely on your device, and we do not have access to them." },
+        { pattern: /automate task entry/, response: "Automation features are on our roadmap. We're excited about the possibilities!" },
+        { pattern: /app tutorial/, response: "Looking for a tutorial? Check out the Help section for step-by-step guidance." },
+        { pattern: /multiple lists/, response: "Creating multiple lists or categories is a feature we're considering. Keep an eye out for updates!" },
+        { pattern: /share my list/, response: "Sharing isn't built in yet, but you can export your list and send the file to others." },
+        { pattern: /notifications/, response: "Notifications are not supported at the moment, but we're looking into adding them in a future version." },
+        { pattern: /night mode/, response: "A darker night mode for the app is a popular request. We're working on implementing it soon." },
+        { pattern: /collaborative features/, response: "Collaborative features for team use are in development. We can't wait to share them with you!" },
 
         // Default response
         { pattern: /.*/, response: "I'm not sure about that. Can you be more specific or ask another question?" }
@@ -390,4 +397,8 @@ moodSelect.addEventListener('change', (e) => {
 // Close the popover when clicked outside
 document.getElementById('dismissTip').addEventListener('click', () => {
     moodTipsContainer.style.display = 'none'; // Hide the tips container
+});
+
+document.getElementById('aboutButton').addEventListener('click', function() {
+    window.location.href = 'about.html'; // Make sure the path to about.html is correct
 });

@@ -18,13 +18,15 @@
 
 <form id="form" style="margin-bottom: 10px">
     <div class="form-container">
-        <input type="text" id="input" class="input" placeholder="Enter your todo here..." autocomplete="off" />
-        <input type="date" id="dueDate" class="due-date-input" /> <!-- Moved next to the text input -->
+        <input type="text" id="input" class="input" placeholder="Enter your todo here..." autocomplete="off" title="Enter the title for your todo, then press enter to post it!" />
+        <input type="date" id="dueDate" class="due-date-input" style="cursor: pointer" title="Add a due date for your todo list item (Optional)"/>
     </div>
-    <ul class="todos" id="todos"></ul>
+    <ul class="todos" id="todos" title="Click on me to toggle me as complete!"></ul>
 </form>
 
 <button id="sortButton" class="sort-button">Sort by Due Date</button>
+
+<button id="aboutButton" class="about-button">About</button>
 
 <h6>
     <br /> Instructions:
@@ -55,9 +57,9 @@
     <button id="filterCompleted" class="filter-btn">Completed</button>
 </div>
 
-<button id="quickAddTask" class="quick-add-btn">Quick Add Task</button>
+<button id="quickAddTask" class="quick-add-btn" title="Quickly add a todo item to your list, which will be marked as important!">Quick Add Task</button>
 
-<div class="mood-tracker-container">
+<div class="mood-tracker-container" title="How are you doing mentally? See some tips here based on your current mood!">
     <h4 class="mood-tips-title">Mental Health Tips:</h4>
     <label for="moodSelect" class="mood-tracker-label">Mood:</label>
     <select id="moodSelect" class="mood-select">
