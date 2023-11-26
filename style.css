@@ -27,7 +27,7 @@ form {
     max-width: 100%;
     width: 400px;
     margin-bottom: 5px; /* Spacing between todo items */
-    border-radius: 4px; /* Rounded corners for todo items */
+    border-radius: 8px;
 }
 
 .form-container {
@@ -36,6 +36,7 @@ form {
     align-items: center;
     gap: 10px;
     padding: 1rem;
+    border-radius: 8px;
 }
 
 .input,
@@ -50,10 +51,16 @@ form {
     padding: 1rem 2rem;
     display: block;
     width: 100%;
+    border-radius: 8px;
 }
 
 .input::placeholder {
     color: #d5d5d5;
+}
+
+#dueDate {
+    border-radius: 8px;
+    border: none;
 }
 
 .todos {
@@ -93,6 +100,10 @@ h6 {
 
 .highlight {
     color: #ff8000;
+}
+
+ul {
+    border-radius: 8px;
 }
 
 .todos li.high-priority {
@@ -223,8 +234,15 @@ h6 {
 .trash-can {
     color: red;
     cursor: pointer;
-    margin-left: 5px;
+    margin-left: 10px;
     font-size: 1.5rem; /* Adjust size as needed */
+}
+
+.edit-icon {
+    cursor: pointer;
+    color: #4CAF50; /* A green color for edit actions */
+    font-size: 1.5rem; /* Larger size for visibility */
+    margin-left: 10px; /* Space from the trash can icon */
 }
 
 .filter-container {
@@ -257,7 +275,7 @@ h6 {
 
 .quick-add-btn {
     position: fixed;
-    top: 10px;
+    bottom: 165px;
     left: 10px;
     padding: 5px 10px;
     cursor: pointer;
@@ -294,7 +312,7 @@ h1 {
 
 .mood-tracker-container {
     position: fixed;
-    top: 70px; /* Adjusted to be below the Quick Add button */
+    top: 10px; /* Adjusted to be below the Quick Add button */
     left: 10px;
     display: flex;
     align-items: center;
@@ -330,7 +348,7 @@ h1 {
 .mood-tips-container {
     display: none;
     position: fixed;
-    top: 120px;
+    top: 60px;
     left: 10px;
     width: auto;
     background-color: #ffffff;

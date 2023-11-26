@@ -73,68 +73,80 @@ function sortTodos() {
 
 function addTodo(todo) {
     let todoText = input.value;
-    let todoDueDate = dueDateInput.value; // Get the value of the due date input
+    let todoDueDate = dueDateInput.value;
 
-    // If todo parameter is provided, it means we're loading existing todos
     if (todo) {
         todoText = todo.text;
         todoDueDate = todo.dueDate;
     }
 
-    // Only add the todo if there is text
     if (todoText) {
         const todoEl = document.createElement("li");
         const textSpan = document.createElement("span");
-        textSpan.textContent = todoText;
         textSpan.className = 'todo-text';
+        textSpan.textContent = todoText;
 
-        // Add event listener to make the todo text editable on click
-        textSpan.addEventListener('click', function() {
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.className = 'editable-input';
-            input.value = textSpan.textContent;
-
-            textSpan.parentNode.insertBefore(input, textSpan);
-            textSpan.style.display = 'none';
-            input.focus();
-
-            input.addEventListener('blur', function() {
-                textSpan.textContent = input.value;
-                textSpan.style.display = '';
-                input.remove();
-                updateLS();
-            });
-        });
-
-        // Create a span element for the due date
         const dueDateSpan = document.createElement("span");
         dueDateSpan.className = 'due-date';
-        dueDateSpan.textContent = todoDueDate; // Set the text of the due date span
+        dueDateSpan.textContent = todoDueDate;
 
-        // Append the due date span to the todo element
-        todoEl.appendChild(dueDateSpan);
-
-        // Create a trash can icon
+        // Create trash can icon
         const trashCan = document.createElement("span");
-        trashCan.innerHTML = '&#128465;'; // Trash can unicode character
+        trashCan.innerHTML = '&#128465;'; // Unicode for the trash can icon
         trashCan.className = 'trash-can';
-
-        // Event listener for the trash can icon
-        trashCan.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevents the click from toggling the completed state
+        trashCan.addEventListener('click', function() {
             todoEl.remove();
             updateLS();
         });
 
-        // Append the due date span and trash can icon to the todo element
-        todoEl.appendChild(textSpan);
-        todoEl.appendChild(dueDateSpan);
-        todoEl.appendChild(trashCan);
+        // Create edit icon
+        const editIcon = document.createElement("span");
+        editIcon.innerHTML = '&#9998;'; // Unicode for the pencil icon
+        editIcon.className = 'edit-icon';
+        editIcon.title = 'Edit Todo';
+        editIcon.addEventListener('click', function() {
+            const inputText = document.createElement('input');
+            inputText.type = 'text';
+            inputText.className = 'editable-input';
+            inputText.value = textSpan.textContent;
 
-        if (todo && todo.completed) {
-            todoEl.classList.add("completed");
-        }
+            const inputDate = document.createElement('input');
+            inputDate.type = 'date';
+            inputDate.className = 'editable-date';
+            inputDate.value = dueDateSpan.textContent;
+
+            textSpan.parentNode.replaceChild(inputText, textSpan);
+            dueDateSpan.parentNode.replaceChild(inputDate, dueDateSpan);
+
+            let saveTimeout;
+
+            function saveEdits() {
+                textSpan.textContent = inputText.value;
+                dueDateSpan.textContent = inputDate.value;
+
+                inputText.parentNode.replaceChild(textSpan, inputText);
+                inputDate.parentNode.replaceChild(dueDateSpan, inputDate);
+
+                updateLS();
+            }
+
+            inputText.addEventListener('blur', function() {
+                // Set a timeout to allow interaction with the date picker
+                saveTimeout = setTimeout(saveEdits, 100);
+            });
+
+            inputDate.addEventListener('blur', saveEdits);
+            inputDate.addEventListener('click', function() {
+                // Clear the timeout if the date picker is clicked
+                clearTimeout(saveTimeout);
+            });
+
+            inputText.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    saveEdits();
+                }
+            });
+        });
 
         if (todo && todo.highPriority) {
             todoEl.classList.add("high-priority");
@@ -153,11 +165,20 @@ function addTodo(todo) {
             }
         });
 
+        // Append elements to todoEl
+        todoEl.appendChild(textSpan);
+        todoEl.appendChild(dueDateSpan);
+        todoEl.appendChild(trashCan);
+        todoEl.appendChild(editIcon);
+
+        // Add todoEl to the DOM
         todosUL.appendChild(todoEl);
 
-        input.value = "";
-        dueDateInput.value = ""; // Clear the due date input
+        // Reset the input fields
+        input.value = '';
+        dueDateInput.value = '';
 
+        // Save the new todo to localStorage
         updateLS();
     }
 }
