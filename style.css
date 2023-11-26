@@ -69,3 +69,121 @@ h6 {
 .highlight {
     color: #ff8000;
 }
+
+.todos li.high-priority {
+    color: #ff4136; /* Red text color to signify high priority */
+    font-weight: bold; /* Optional: make the text bold */
+}
+
+.chatbot {
+    z-index: 1000;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.chatbot:hover {
+    transform: scale(1.03);
+}
+
+.chat-messages {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+}
+
+.chat-messages div {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 8px;
+}
+
+.chat-messages div:nth-child(odd) { /* User messages */
+    background-color: #e1e1e1;
+    align-self: flex-end;
+    margin-right: 10%;
+}
+
+.chat-messages div:nth-child(even) { /* Eliza messages */
+    background-color: #c4c4ff;
+    align-self: flex-start;
+    margin-left: 10%;
+}
+
+.chat-input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #534caf;
+    color: white;
+    outline: none;
+    border-top: 1px solid #ccc;
+}
+
+.chat-input::placeholder {
+    color: #c4c4c4;
+}
+
+.chat-header {
+    background-color: #534caf;
+    color: white;
+    padding: 10px;
+    border-bottom: 1px solid #403890;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.chat-title {
+    font-weight: 400;
+    font-size: 16.5px;
+}
+
+.toggle-chat {
+    background-color: #534caf;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px; /* Adjusted for better visibility */
+    height: 30px; /* Adjusted for better visibility */
+    font-size: 1rem;
+    cursor: pointer;
+    position: absolute;
+    top: -2.5px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    transform: translateY(30%);
+}
+
+.toggle-chat:hover {
+    background-color: #403890;
+}
+
+.clock-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-weight: 600;
+}
+
+.clock-title {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
