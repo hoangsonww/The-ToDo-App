@@ -17,16 +17,14 @@
 <br>
 
 <form id="form">
-    <input
-            type="text"
-            id="input"
-            class="input"
-            placeholder="Enter your todo here..."
-            autocomplete="off"
-    />
-
+    <div class="form-container">
+        <input type="text" id="input" class="input" placeholder="Enter your todo here..." autocomplete="off" />
+        <input type="date" id="dueDate" class="due-date-input" /> <!-- Moved next to the text input -->
+    </div>
     <ul class="todos" id="todos"></ul>
 </form>
+
+<button id="sortButton" class="sort-button">Sort by Due Date</button>
 
 <h6>
     <br /> Left click to toggle complete.
@@ -47,6 +45,31 @@
 <div id="clock-container" class="clock-container">
     <div class="clock-title">Local Time</div>
     <div id="clock" class="clock"></div>
+</div>
+
+<div class="filter-container">
+    <h4 class="filter-title">Filter Tasks</h4>
+    <button id="filterAll" class="filter-btn">All</button>
+    <button id="filterActive" class="filter-btn">Active</button>
+    <button id="filterCompleted" class="filter-btn">Completed</button>
+</div>
+
+<button id="quickAddTask" class="quick-add-btn">Quick Add Task</button>
+
+<div class="mood-tracker-container">
+    <label for="moodSelect" class="mood-tracker-label">Mood:</label>
+    <select id="moodSelect" class="mood-select">
+        <option value="Happy">Happy</option>
+        <option value="Motivated">Motivated</option>
+        <option value="Stressed">Stressed</option>
+        <option value="Neutral">Neutral</option>
+        <option value="Sad">Sad</option>
+    </select>
+</div>
+<div id="moodTipsContainer" class="mood-tips-container">
+    <h4 class="mood-tips-title">Mood Tips</h4>
+    <p id="moodTip" class="mood-tip"></p>
+    <button id="dismissTip" class="dismiss-tip-btn">Dismiss</button>
 </div>
 
 </body>

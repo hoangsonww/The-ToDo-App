@@ -1,6 +1,7 @@
 const form = document.getElementById("form");
 const input = document.getElementById("input");
 const todosUL = document.getElementById("todos");
+const dueDateInput = document.getElementById("dueDate"); // Get the due date input element
 
 const todos = JSON.parse(localStorage.getItem("todos"));
 
@@ -12,70 +13,161 @@ if (todos) {
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    addTodo();
+    addTodo(); // Call addTodo when the form is submitted
 });
 
-function togglePriority(todoEl) {
-    todoEl.classList.toggle('high-priority');
-    updateLS();
+document.getElementById('sortButton').addEventListener('click', sortTodos);
+
+// Filter feature implementation
+document.getElementById('filterAll').addEventListener('click', () => filterTodos('all'));
+document.getElementById('filterActive').addEventListener('click', () => filterTodos('active'));
+document.getElementById('filterCompleted').addEventListener('click', () => filterTodos('completed'));
+
+function filterTodos(filter) {
+    // Get all todo elements
+    const todosEl = document.querySelectorAll('li');
+
+    // Show/hide elements based on the filter
+    todosEl.forEach(todoEl => {
+        switch (filter) {
+            case 'completed':
+                if (todoEl.classList.contains('completed')) {
+                    todoEl.style.display = '';
+                } else {
+                    todoEl.style.display = 'none';
+                }
+                break;
+            case 'active':
+                if (!todoEl.classList.contains('completed')) {
+                    todoEl.style.display = '';
+                } else {
+                    todoEl.style.display = 'none';
+                }
+                break;
+            default:
+                todoEl.style.display = '';
+        }
+    });
+}
+
+function sortTodos() {
+    // Get the todos from localStorage
+    let todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+    // Sort todos by due date, putting todos without due date at the end
+    todos.sort((a, b) => {
+        if (!a.dueDate) return 1; // Puts todos without due date at the end
+        if (!b.dueDate) return -1; // Puts todos without due date at the end
+        return new Date(a.dueDate) - new Date(b.dueDate); // Compares dates
+    });
+
+    // Clear current todos in the DOM
+    todosUL.innerHTML = '';
+
+    // Re-add sorted todos to the DOM
+    todos.forEach(todo => addTodo(todo));
+
+    // Update localStorage
+    localStorage.setItem("todos", JSON.stringify(todos));
 }
 
 function addTodo(todo) {
     let todoText = input.value;
+    let todoDueDate = dueDateInput.value; // Get the value of the due date input
 
+    // If todo parameter is provided, it means we're loading existing todos
     if (todo) {
         todoText = todo.text;
+        todoDueDate = todo.dueDate;
     }
 
+    // Only add the todo if there is text
     if (todoText) {
         const todoEl = document.createElement("li");
+        todoEl.innerText = todoText;
+
+        // Create a span element for the due date
+        const dueDateSpan = document.createElement("span");
+        dueDateSpan.className = 'due-date';
+        dueDateSpan.textContent = todoDueDate; // Set the text of the due date span
+
+        // Append the due date span to the todo element
+        todoEl.appendChild(dueDateSpan);
+
+        // Create a trash can icon
+        const trashCan = document.createElement("span");
+        trashCan.innerHTML = '&#128465;'; // Trash can unicode character
+        trashCan.className = 'trash-can';
+
+        // Event listener for the trash can icon
+        trashCan.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevents the click from toggling the completed state
+            todoEl.remove();
+            updateLS();
+        });
+
+        // Append the due date span and trash can icon to the todo element
+        todoEl.appendChild(dueDateSpan);
+        todoEl.appendChild(trashCan);
+
         if (todo && todo.completed) {
             todoEl.classList.add("completed");
         }
-        // Check if the todo is marked as high priority
+
         if (todo && todo.highPriority) {
             todoEl.classList.add("high-priority");
         }
 
-        todoEl.innerText = todoText;
-
-        todoEl.addEventListener("click", (e) => {
-            if (e.ctrlKey) {
-                // Ctrl+Click to toggle high priority
-                togglePriority(todoEl);
-            } else {
-                // Normal click to toggle completed
-                todoEl.classList.toggle("completed");
-                updateLS();
-            }
+        todoEl.addEventListener("click", () => {
+            todoEl.classList.toggle("completed");
+            updateLS();
         });
 
-        // The rest of your event listeners remain the same
+        todoEl.addEventListener("contextmenu", (e) => {
+            e.preventDefault();
+            todoEl.remove();
+            updateLS();
+        });
+
+        todoEl.addEventListener('mousedown', (e) => {
+            if (e.ctrlKey) {
+                // Ctrl+Click to toggle high priority
+                e.preventDefault(); // Prevent default to allow for Ctrl+Click without triggering selection
+                togglePriority(todoEl);
+            }
+        });
 
         todosUL.appendChild(todoEl);
 
         input.value = "";
+        dueDateInput.value = ""; // Clear the due date input
 
         updateLS();
     }
 }
 
-// Update updateLS function to save the high priority status
 function updateLS() {
     const todosEl = document.querySelectorAll("li");
     const todos = [];
 
     todosEl.forEach((todoEl) => {
+        const todoText = todoEl.childNodes[0].nodeValue.trim();
+        const todoDueDate = todoEl.querySelector('.due-date').textContent; // Get the text content of the due date span
+
         todos.push({
-            text: todoEl.innerText,
+            text: todoText,
             completed: todoEl.classList.contains("completed"),
-            // Save the high priority status
             highPriority: todoEl.classList.contains('high-priority'),
+            dueDate: todoDueDate // Store the due date
         });
     });
 
     localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function togglePriority(todoEl) {
+    todoEl.classList.toggle('high-priority');
+    updateLS();
 }
 
 // Chat interaction with delay
@@ -211,5 +303,54 @@ function updateClock() {
 
 // Initialize the clock
 updateClock();
+
 // Update the clock every second
 setInterval(updateClock, 1000);
+
+// Global quick task counter
+let quickTaskCounter = JSON.parse(localStorage.getItem("quickTaskCounter")) || 0;
+
+document.getElementById('quickAddTask').addEventListener('click', () => {
+    quickTaskCounter++;
+    localStorage.setItem("quickTaskCounter", JSON.stringify(quickTaskCounter)); // Save the new counter
+    quickAddTask(`Quick Task ${quickTaskCounter}`);
+});
+
+function quickAddTask(taskName) {
+    const nextWeek = new Date(new Date().setDate(new Date().getDate() + 7));
+    const dueDate = nextWeek.toISOString().split('T')[0]; // Format YYYY-MM-DD
+
+    addTodo({
+        text: taskName,
+        completed: false,
+        highPriority: true,
+        dueDate: dueDate
+    });
+}
+
+const moodTips = {
+    Happy: "Remember what made you happy and try to include it in your daily routine!",
+    Motivated: "Channel your motivation into setting clear goals for the day.",
+    Stressed: "Take deep breaths, and consider short breaks or walks to manage stress.",
+    Neutral: "Maintaining a neutral mood is great. Consider planning your next activity!",
+    Sad: "It's okay to feel sad. Reach out to someone you trust or engage in an activity you enjoy."
+};
+
+// Reference to the mood select element
+const moodSelect = document.getElementById('moodSelect');
+// Reference to the mood tips container and paragraph
+const moodTipsContainer = document.getElementById('moodTipsContainer');
+const moodTipParagraph = document.getElementById('moodTip');
+
+moodSelect.addEventListener('change', (e) => {
+    const mood = e.target.value;
+    const tip = moodTips[mood];
+
+    moodTipParagraph.textContent = tip; // Set the mood tip text
+    moodTipsContainer.style.display = 'block'; // Show the tips container
+});
+
+// Close the popover when clicked outside
+document.getElementById('dismissTip').addEventListener('click', () => {
+    moodTipsContainer.style.display = 'none'; // Hide the tips container
+});

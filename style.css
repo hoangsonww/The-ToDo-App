@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #54cee7;
+    background-color: #c9dfff;
     color: #444;
     display: flex;
     align-items: center;
@@ -26,6 +26,21 @@ form {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 100%;
     width: 400px;
+    margin-bottom: 5px; /* Spacing between todo items */
+    border-radius: 4px; /* Rounded corners for todo items */
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 1rem;
+}
+
+.input,
+.due-date-input {
+    margin: 0; /* Remove margin to fit into the flex container */
 }
 
 .input {
@@ -49,10 +64,20 @@ form {
 }
 
 .todos li {
+    display: flex;
+    justify-content: space-between; /* Keeps content and due date on opposite ends */
+    align-items: center; /* Vertically centers the content in the list item */
+    padding: 1rem 2rem;
     border-top: 1px solid #e5e5e5;
     cursor: pointer;
     font-size: 1.5rem;
-    padding: 1rem 2rem;
+}
+
+.due-date {
+    font-size: 0.75rem; /* Makes the due date text smaller */
+    color: #888; /* Adjust color as desired */
+    margin-left: auto; /* Pushes the due date to the right edge */
+    padding-left: 1rem; /* Ensures some space between the todo text and the due date */
 }
 
 .todos li.completed {
@@ -186,4 +211,183 @@ h6 {
     font-size: 1rem;
     color: #333;
     margin-bottom: 5px;
+}
+
+.sort-button {
+    margin: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Trash can icon styles */
+.trash-can {
+    cursor: pointer;
+    margin-left: 5px;
+    font-size: 1rem; /* Adjust size as needed */
+}
+
+.filter-container {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filter-title {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.filter-btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background: #f8f8f8;
+    border-radius: 3px;
+}
+
+.quick-add-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.quick-add-btn:hover {
+    background-color: #367c39; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight raise on hover */
+}
+
+.filter-btn:hover {
+    background-color: #e6e6e6; /* Slightly darker on hover */
+    border-color: #cccccc; /* Darker border on hover */
+}
+
+/* Adjust the entire app's max-width for a more centered look */
+#form {
+    width: auto;
+    max-width: 600px; /* Slightly wider form */
+}
+
+/* Ensure the title is centered to the new form width */
+h1 {
+    margin-top: 20px; /* More space above the title */
+    width: 100%;
+    max-width: 600px;
+}
+
+.mood-tracker-container {
+    position: fixed;
+    top: 70px; /* Adjusted to be below the Quick Add button */
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.mood-tracker-label {
+    font-family: "Poppins", sans-serif;
+    color: #333;
+}
+
+.mood-select {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Restyle the select dropdown on focus for better user experience */
+.mood-select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.mood-tips-container {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 120px; /* Positioned below the mood tracker */
+    left: 10px;
+    width: auto;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 10;
+}
+
+.mood-tips-title {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    color: #333;
+    font-size: 1rem;
+}
+
+.mood-tip {
+    font-family: "Poppins", sans-serif;
+    color: #555;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Styles for the dismiss button */
+.dismiss-tip-btn {
+    padding: 5px 10px;
+    background-color: #ff5c5c; /* A red color for dismiss actions */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    margin-top: 10px;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.dismiss-tip-btn:hover {
+    background-color: #e60000; /* Darker red on hover for feedback */
+}
+
+/* Enhanced styles for the sort button */
+.sort-button {
+    padding: 10px 15px;
+    background-color: #4CAF50; /* Consistent with the quick add button */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+.sort-button:hover {
+    background-color: #367c39; /* Darker green on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Larger shadow for a lifting effect */
 }
