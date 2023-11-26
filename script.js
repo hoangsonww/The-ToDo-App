@@ -84,7 +84,28 @@ function addTodo(todo) {
     // Only add the todo if there is text
     if (todoText) {
         const todoEl = document.createElement("li");
-        todoEl.innerText = todoText;
+        const textSpan = document.createElement("span");
+        textSpan.textContent = todoText;
+        textSpan.className = 'todo-text';
+
+        // Add event listener to make the todo text editable on click
+        textSpan.addEventListener('click', function() {
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'editable-input';
+            input.value = textSpan.textContent;
+
+            textSpan.parentNode.insertBefore(input, textSpan);
+            textSpan.style.display = 'none';
+            input.focus();
+
+            input.addEventListener('blur', function() {
+                textSpan.textContent = input.value;
+                textSpan.style.display = '';
+                input.remove();
+                updateLS();
+            });
+        });
 
         // Create a span element for the due date
         const dueDateSpan = document.createElement("span");
@@ -107,6 +128,7 @@ function addTodo(todo) {
         });
 
         // Append the due date span and trash can icon to the todo element
+        todoEl.appendChild(textSpan);
         todoEl.appendChild(dueDateSpan);
         todoEl.appendChild(trashCan);
 
@@ -120,12 +142,6 @@ function addTodo(todo) {
 
         todoEl.addEventListener("click", () => {
             todoEl.classList.toggle("completed");
-            updateLS();
-        });
-
-        todoEl.addEventListener("contextmenu", (e) => {
-            e.preventDefault();
-            todoEl.remove();
             updateLS();
         });
 
@@ -151,14 +167,14 @@ function updateLS() {
     const todos = [];
 
     todosEl.forEach((todoEl) => {
-        const todoText = todoEl.childNodes[0].nodeValue.trim();
-        const todoDueDate = todoEl.querySelector('.due-date').textContent; // Get the text content of the due date span
+        const todoText = todoEl.querySelector('.todo-text').textContent;
+        const todoDueDate = todoEl.querySelector('.due-date').textContent;
 
         todos.push({
             text: todoText,
             completed: todoEl.classList.contains("completed"),
             highPriority: todoEl.classList.contains('high-priority'),
-            dueDate: todoDueDate // Store the due date
+            dueDate: todoDueDate,
         });
     });
 

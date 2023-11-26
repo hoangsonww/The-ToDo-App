@@ -221,9 +221,10 @@ h6 {
 
 /* Trash can icon styles */
 .trash-can {
+    color: red;
     cursor: pointer;
     margin-left: 5px;
-    font-size: 1rem; /* Adjust size as needed */
+    font-size: 1.5rem; /* Adjust size as needed */
 }
 
 .filter-container {
@@ -327,9 +328,9 @@ h1 {
 }
 
 .mood-tips-container {
-    display: none; /* Initially hidden */
+    display: none;
     position: fixed;
-    top: 120px; /* Positioned below the mood tracker */
+    top: 120px;
     left: 10px;
     width: auto;
     background-color: #ffffff;
@@ -390,4 +391,20 @@ h1 {
 .sort-button:hover {
     background-color: #367c39; /* Darker green on hover */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Larger shadow for a lifting effect */
+}
+
+.editable-input {
+    border: 1px solid #ddd;
+    padding: 5px;
+    font-size: 1rem;
+    margin-right: 5px;
+    border-radius: 3px;
+    width: 60%; /* You can adjust the width as needed */
+}
+
+.editable-date {
+    border: 1px solid #ddd;
+    padding: 5px;
+    font-size: 1rem;
+    border-radius: 3px;
 }
