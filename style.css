@@ -279,7 +279,7 @@ ul {
 
 .quick-add-btn {
     position: fixed;
-    bottom: 165px;
+    bottom: 100px;
     left: 10px;
     padding: 5px 10px;
     cursor: pointer;
@@ -565,4 +565,22 @@ h1 {
 .theme-toggle-button:hover {
     background-color: #367c39;
     transform: translateY(-2px);
+}
+
+.mood-tracker-container,
+.chatbot,
+.clock-container,
+.filter-container,
+.quick-add-btn {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .mood-tracker-container,
+    .chatbot,
+    .clock-container,
+    .filter-container,
+    .quick-add-btn {
+        display: block;
+    }
 }
