@@ -431,7 +431,6 @@ h1 {
     border-radius: 3px;
 }
 
-/* Add to your existing CSS styles */
 .about-button {
     padding: 10px 20px;
     background-color: #4CAF50; /* Green background */
@@ -449,4 +448,121 @@ h1 {
 .about-button:hover {
     background-color: #367c39; /* Darker green on hover */
     transform: translateY(-2px); /* Slight raise on hover */
+}
+
+/* Dark mode styles */
+.dark-mode {
+    background-color: #1a1a1a; /* Dark background for the body */
+    color: #c7c7c7; /* Lighter text color for better readability in dark mode */
+}
+
+.dark-mode h1 {
+    color: #ff66cc; /* Adjusted title color for dark mode */
+}
+
+.dark-mode form {
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Lighter box-shadow for dark mode */
+}
+
+.dark-mode .todos {
+    background-color: #333; /* Dark background for todo list */
+}
+
+.dark-mode .todos li {
+    border-top: 1px solid #555; /* Darker border for list items */
+}
+
+.dark-mode .chatbot {
+    background-color: #333;
+    border: 1px solid #555;
+}
+
+.dark-mode .chat-messages {
+    background-color: #555;
+    border-bottom: 1px solid #777;
+}
+
+.dark-mode .chat-messages div:nth-child(odd) {
+    background-color: #707070;
+}
+
+.dark-mode .chat-messages div:nth-child(even) {
+    background-color: #999;
+}
+
+.dark-mode .chat-input {
+    background-color: #666;
+    color: #ddd;
+}
+
+.dark-mode .filter-title,
+.dark-mode .clock-title {
+    color: #ddd;
+}
+
+.dark-mode .chat-header {
+    background-color: #666;
+    border-bottom: 1px solid #888;
+}
+
+.dark-mode .clock-container {
+    background-color: #333;
+}
+
+.dark-mode .filter-container {
+    background: #333;
+}
+
+.dark-mode .filter-btn,
+.dark-mode .quick-add-btn,
+.dark-mode .sort-button,
+.dark-mode .about-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.dark-mode .filter-btn:hover,
+.dark-mode .quick-add-btn:hover,
+.dark-mode .sort-button:hover,
+.dark-mode .about-button:hover {
+    background-color: #367c39;
+}
+
+.dark-mode .mood-tracker-container {
+    background-color: #333;
+    border: 1px solid #555;
+    color: #ddd;
+}
+
+.dark-mode .mood-tracker-label,
+.dark-mode .mood-tips-title {
+    color: #ddd;
+}
+
+.dark-mode .mood-tip {
+    color: #ddd;
+}
+
+.dark-mode .mood-tips-container {
+    background-color: #333;
+    border: 1px solid #555;
+    color: #ddd;
+}
+
+.theme-toggle-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 15px;
+}
+
+.theme-toggle-button:hover {
+    background-color: #367c39;
+    transform: translateY(-2px);
 }

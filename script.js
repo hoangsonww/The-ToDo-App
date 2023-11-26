@@ -402,3 +402,24 @@ document.getElementById('dismissTip').addEventListener('click', () => {
 document.getElementById('aboutButton').addEventListener('click', function() {
     window.location.href = 'about.html'; // Make sure the path to about.html is correct
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const themeToggleButton = document.getElementById('themeToggleButton');
+    const bodyElement = document.body;
+
+    themeToggleButton.addEventListener('click', function () {
+        bodyElement.classList.toggle('dark-mode');
+        // Save the theme preference in local storage
+        if (bodyElement.classList.contains('dark-mode')) {
+            localStorage.setItem('TodoTheme', 'dark');
+        } else {
+            localStorage.setItem('TodoTheme', 'light');
+        }
+    });
+
+    // Load the theme preference from local storage and apply it
+    const savedTheme = localStorage.getItem('TodoTheme');
+    if (savedTheme === 'dark') {
+        bodyElement.classList.add('dark-mode');
+    }
+});
