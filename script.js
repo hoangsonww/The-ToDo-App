@@ -95,6 +95,7 @@ function addTodo(todo) {
         trashCan.innerHTML = '&#128465;'; // Unicode for the trash can icon
         trashCan.className = 'trash-can';
         trashCan.title = 'Delete Todo';
+        trashCan.style.color = 'red';
         trashCan.addEventListener('click', function() {
             todoEl.remove();
             updateLS();
@@ -104,17 +105,19 @@ function addTodo(todo) {
         const editIcon = document.createElement("span");
         editIcon.innerHTML = '&#9998;'; // Unicode for the pencil icon
         editIcon.className = 'edit-icon';
-        editIcon.title = 'Edit Todo';
+        editIcon.title = 'Edit todo (press Enter to save)';
         editIcon.addEventListener('click', function() {
             const inputText = document.createElement('input');
             inputText.type = 'text';
             inputText.className = 'editable-input';
             inputText.value = textSpan.textContent;
+            inputText.title = 'Press Enter to save';
 
             const inputDate = document.createElement('input');
             inputDate.type = 'date';
             inputDate.className = 'editable-date';
             inputDate.value = dueDateSpan.textContent;
+            inputDate.title = 'Press Enter to save';
 
             textSpan.parentNode.replaceChild(inputText, textSpan);
             dueDateSpan.parentNode.replaceChild(inputDate, dueDateSpan);
