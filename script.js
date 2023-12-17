@@ -445,3 +445,74 @@ function updateProgressTracker() {
     progressBar.style.width = `${progressPercentage}%`;
     progressInfo.textContent = `${completedTasks} / ${totalTasks} tasks completed`;
 }
+
+let timerInterval;
+let timeLeft;
+let defaultTime = 25 * 60;
+
+document.getElementById('timer-start').addEventListener('click', function() {
+    clearInterval(timerInterval);
+    if (timeLeft > 0) {
+        timerInterval = setInterval(updateTimer, 1000);
+    }
+});
+
+document.getElementById('timer-reset').addEventListener('click', function() {
+    clearInterval(timerInterval);
+    timeLeft = defaultTime;
+    updateTimerDisplay();
+});
+
+document.getElementById('timer-minutes').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        setCustomTimer();
+    }
+});
+
+document.getElementById('timer-seconds').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        setCustomTimer();
+    }
+});
+
+document.getElementById('timer-set-button').addEventListener('click', setCustomTimer);
+
+function setCustomTimer() {
+    const minutes = parseInt(document.getElementById('timer-minutes').value) || 0;
+    const seconds = parseInt(document.getElementById('timer-seconds').value) || 0;
+    defaultTime = timeLeft = (minutes * 60) + seconds;
+    updateTimerDisplay();
+}
+
+function updateTimer() {
+    timeLeft--;
+    updateTimerDisplay();
+
+    if (timeLeft === 0) {
+        clearInterval(timerInterval);
+        playSound();
+        setTimeout(() => {
+            alert('Good job! Focus period complete - You can now take a quick rest.');
+        }, 100); // Delay the alert slightly to ensure sound plays first
+        timeLeft = defaultTime; // Reset timer
+    }
+}
+
+function playSound() {
+    var audio = new Audio('timer-sound.mp3');
+    audio.play();
+}
+
+function resetTimer() {
+    timeLeft = defaultTime;
+}
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    document.getElementById('timer-display').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+// Initialize timer with default value
+resetTimer();
+updateTimerDisplay();

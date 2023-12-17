@@ -639,3 +639,63 @@ h1 {
     text-align: center;
     margin-top: 5px;
 }
+
+.focus-timer-container {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #f3f4f6;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    text-align: center;
+}
+
+.timer-title {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.timer-display {
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.timer-button {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.timer-button:hover {
+    background-color: #45a049;
+}
+
+.timer-set {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.timer-input {
+    width: 50px;
+    padding: 5px;
+    margin: 0 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.timer-input:focus {
+    outline: none;
+    border-color: #4caf50;
+}
