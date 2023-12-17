@@ -590,7 +590,9 @@ h1 {
 .chatbot,
 .clock-container,
 .filter-container,
-.quick-add-btn {
+.quick-add-btn,
+.focus-timer-container,
+.progress-tracker-container {
     display: none;
 }
 
@@ -599,7 +601,9 @@ h1 {
     .chatbot,
     .clock-container,
     .filter-container,
-    .quick-add-btn {
+    .quick-add-btn,
+    .focus-timer-container,
+    .progress-tracker-container {
         display: block;
     }
 }
