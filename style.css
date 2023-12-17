@@ -26,22 +26,48 @@ form {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 100%;
     width: 400px;
-    margin-bottom: 5px; /* Spacing between todo items */
+    margin-bottom: 5px;
     border-radius: 8px;
 }
 
 .form-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
     gap: 10px;
     padding: 1rem;
     border-radius: 8px;
 }
 
+#postButton {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    align-self: center;
+}
+
+#postButton:hover {
+    background-color: #367c39;
+    transform: translateY(-2px);
+}
+
 .input,
 .due-date-input {
-    margin: 0; /* Remove margin to fit into the flex container */
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}
+
+.input,
+.due-date-input {
+    margin: 0;
 }
 
 .input {
@@ -72,8 +98,8 @@ form {
 
 .todos li {
     display: flex;
-    justify-content: space-between; /* Keeps content and due date on opposite ends */
-    align-items: center; /* Vertically centers the content in the list item */
+    justify-content: space-between;
+    align-items: center;
     padding: 1rem 2rem;
     border-top: 1px solid #e5e5e5;
     cursor: pointer;
@@ -81,10 +107,10 @@ form {
 }
 
 .due-date {
-    font-size: 0.75rem; /* Makes the due date text smaller */
-    color: #888; /* Adjust color as desired */
-    margin-left: auto; /* Pushes the due date to the right edge */
-    padding-left: 1rem; /* Ensures some space between the todo text and the due date */
+    font-size: 0.75rem;
+    color: #888;
+    margin-left: auto;
+    padding-left: 1rem;
 }
 
 .todos li.completed {
@@ -107,8 +133,8 @@ ul {
 }
 
 .todos li.high-priority {
-    color: #ff4136; /* Red text color to signify high priority */
-    font-weight: bold; /* Optional: make the text bold */
+    color: #ff4136;
+    font-weight: bold;
 }
 
 .chatbot {
@@ -143,13 +169,13 @@ ul {
     border-radius: 8px;
 }
 
-.chat-messages div:nth-child(odd) { /* User messages */
+.chat-messages div:nth-child(odd) {
     background-color: #e1e1e1;
     align-self: flex-end;
     margin-right: 10%;
 }
 
-.chat-messages div:nth-child(even) { /* Eliza messages */
+.chat-messages div:nth-child(even) {
     background-color: #c4c4ff;
     align-self: flex-start;
     margin-left: 10%;
@@ -188,8 +214,8 @@ ul {
     color: white;
     border: none;
     border-radius: 50%;
-    width: 30px; /* Adjusted for better visibility */
-    height: 30px; /* Adjusted for better visibility */
+    width: 30px;
+    height: 30px;
     font-size: 1rem;
     cursor: pointer;
     position: absolute;
@@ -234,19 +260,18 @@ ul {
     cursor: pointer;
 }
 
-/* Trash can icon styles */
 .trash-can {
     color: red;
     cursor: pointer;
     margin-left: 10px;
-    font-size: 1.5rem; /* Adjust size as needed */
+    font-size: 1.5rem;
 }
 
 .edit-icon {
     cursor: pointer;
-    color: #4CAF50; /* A green color for edit actions */
-    font-size: 1.5rem; /* Larger size for visibility */
-    margin-left: 10px; /* Space from the trash can icon */
+    color: #4CAF50;
+    font-size: 1.5rem;
+    margin-left: 10px;
 }
 
 .filter-container {
@@ -283,8 +308,8 @@ ul {
     left: 10px;
     padding: 5px 10px;
     cursor: pointer;
-    background-color: #4CAF50; /* Green background */
-    color: white; /* White text */
+    background-color: #4CAF50;
+    color: white;
     border: none;
     border-radius: 3px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -292,31 +317,29 @@ ul {
 }
 
 .quick-add-btn:hover {
-    background-color: #367c39; /* Darker green on hover */
-    transform: translateY(-2px); /* Slight raise on hover */
+    background-color: #367c39;
+    transform: translateY(-2px);
 }
 
 .filter-btn:hover {
-    background-color: #e6e6e6; /* Slightly darker on hover */
-    border-color: #cccccc; /* Darker border on hover */
+    background-color: #e6e6e6;
+    border-color: #cccccc;
 }
 
-/* Adjust the entire app's max-width for a more centered look */
 #form {
     width: auto;
-    max-width: 600px; /* Slightly wider form */
+    max-width: 600px;
 }
 
-/* Ensure the title is centered to the new form width */
 h1 {
-    margin-top: 20px; /* More space above the title */
+    margin-top: 20px;
     width: 100%;
     max-width: 600px;
 }
 
 .mood-tracker-container {
     position: fixed;
-    top: 10px; /* Adjusted to be below the Quick Add button */
+    top: 10px;
     left: 10px;
     display: flex;
     align-items: center;
@@ -343,7 +366,6 @@ h1 {
     outline: none;
 }
 
-/* Restyle the select dropdown on focus for better user experience */
 .mood-select:focus {
     border-color: #4CAF50;
     box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
@@ -352,7 +374,7 @@ h1 {
 .mood-tips-container {
     display: none;
     position: fixed;
-    top: 60px;
+    top: 84px;
     left: 10px;
     width: auto;
     background-color: #ffffff;
@@ -377,10 +399,9 @@ h1 {
     margin-top: 5px;
 }
 
-/* Styles for the dismiss button */
 .dismiss-tip-btn {
     padding: 5px 10px;
-    background-color: #ff5c5c; /* A red color for dismiss actions */
+    background-color: #ff5c5c;
     color: white;
     border: none;
     border-radius: 3px;
@@ -393,13 +414,12 @@ h1 {
 }
 
 .dismiss-tip-btn:hover {
-    background-color: #e60000; /* Darker red on hover for feedback */
+    background-color: #e60000;
 }
 
-/* Enhanced styles for the sort button */
 .sort-button {
     padding: 10px 15px;
-    background-color: #4CAF50; /* Consistent with the quick add button */
+    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 3px;
@@ -411,8 +431,8 @@ h1 {
 }
 
 .sort-button:hover {
-    background-color: #367c39; /* Darker green on hover */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Larger shadow for a lifting effect */
+    background-color: #367c39;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .editable-input {
@@ -421,7 +441,7 @@ h1 {
     font-size: 1rem;
     margin-right: 5px;
     border-radius: 3px;
-    width: 60%; /* You can adjust the width as needed */
+    width: 60%;
 }
 
 .editable-date {
@@ -433,43 +453,42 @@ h1 {
 
 .about-button {
     padding: 10px 20px;
-    background-color: #4CAF50; /* Green background */
-    color: white; /* White text */
+    background-color: #4CAF50;
+    color: white;
     border: none;
     border-radius: 3px;
     cursor: pointer;
     font-family: "Poppins", sans-serif;
     transition: background-color 0.3s, transform 0.3s;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    margin-top: 5px; /* Space from the sort button */
-    align-self: center; /* Center the button */
+    margin-top: 5px;
+    align-self: center;
 }
 
 .about-button:hover {
-    background-color: #367c39; /* Darker green on hover */
-    transform: translateY(-2px); /* Slight raise on hover */
+    background-color: #367c39;
+    transform: translateY(-2px);
 }
 
-/* Dark mode styles */
 .dark-mode {
-    background-color: #1a1a1a; /* Dark background for the body */
-    color: #c7c7c7; /* Lighter text color for better readability in dark mode */
+    background-color: #1a1a1a;
+    color: #c7c7c7;
 }
 
 .dark-mode h1 {
-    color: #ff66cc; /* Adjusted title color for dark mode */
+    color: #ff66cc;
 }
 
 .dark-mode form {
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Lighter box-shadow for dark mode */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
 }
 
 .dark-mode .todos {
-    background-color: #333; /* Dark background for todo list */
+    background-color: #333;
 }
 
 .dark-mode .todos li {
-    border-top: 1px solid #555; /* Darker border for list items */
+    border-top: 1px solid #555;
 }
 
 .dark-mode .chatbot {
@@ -583,4 +602,40 @@ h1 {
     .quick-add-btn {
         display: block;
     }
+}
+
+.progress-tracker-container {
+    position: fixed;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #f3f4f6;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 200px;
+}
+
+.progress-tracker-title {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    background-color: #4caf50;
+    height: 20px;
+    width: 0%;
+    border-radius: 5px;
+    transition: width 0.4s ease;
+}
+
+.progress-info {
+    text-align: center;
+    margin-top: 5px;
 }

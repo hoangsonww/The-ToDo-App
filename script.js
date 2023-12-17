@@ -16,6 +16,11 @@ form.addEventListener("submit", (e) => {
     addTodo(); // Call addTodo when the form is submitted
 });
 
+document.getElementById("postButton").addEventListener("click", (e) => {
+    e.preventDefault();
+    addTodo();
+});
+
 document.getElementById('sortButton').addEventListener('click', sortTodos);
 
 // Filter feature implementation
@@ -184,6 +189,7 @@ function addTodo(todo) {
 
         // Save the new todo to localStorage
         updateLS();
+        updateProgressTracker();
     }
 }
 
@@ -204,6 +210,7 @@ function updateLS() {
     });
 
     localStorage.setItem("todos", JSON.stringify(todos));
+    updateProgressTracker();
 }
 
 function togglePriority(todoEl) {
@@ -234,7 +241,7 @@ chatInput.addEventListener("keydown", (e) => {
             const elizaMsgElem = document.createElement("div");
             elizaMsgElem.innerText = `Eliza: ${response}`;
             chatMessages.appendChild(elizaMsgElem);
-        }, 1000); // 1-second delay
+        }, 1000);
 
         e.target.value = '';
     }
@@ -426,3 +433,15 @@ document.addEventListener('DOMContentLoaded', function () {
         bodyElement.classList.add('dark-mode');
     }
 });
+
+function updateProgressTracker() {
+    const totalTasks = document.querySelectorAll("li").length;
+    const completedTasks = document.querySelectorAll("li.completed").length;
+    const progressPercentage = totalTasks === 0 ? 0 : (completedTasks / totalTasks) * 100;
+
+    const progressBar = document.querySelector(".progress");
+    const progressInfo = document.querySelector(".progress-info");
+
+    progressBar.style.width = `${progressPercentage}%`;
+    progressInfo.textContent = `${completedTasks} / ${totalTasks} tasks completed`;
+}

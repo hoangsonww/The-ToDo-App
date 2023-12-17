@@ -18,8 +18,9 @@
 
 <form id="form" style="margin-bottom: 10px">
     <div class="form-container">
-        <input type="text" id="input" class="input" placeholder="Enter your todo here..." autocomplete="off" title="Enter the title for your todo, then press enter to post it!" />
-        <input type="date" id="dueDate" class="due-date-input" style="cursor: pointer" title="Add a due date for your todo list item (Optional)"/>
+        <input type="text" id="input" class="input" placeholder="Enter your todo here..." autocomplete="off" title="Enter the title for your todo, then press enter or click the POST button to add it!" />
+        <input placeholder="Add a due date for your todo" type="date" id="dueDate" class="due-date-input" style="cursor: pointer" title="Add a due date for your todo list item (Optional)"/>
+        <button id="postButton" title="Press enter or click this button to add this todo item!">POST</button>
     </div>
     <ul class="todos" id="todos" title="Click on this todo item to toggle it as complete!"></ul>
 </form>
@@ -50,6 +51,14 @@
 <div id="clock-container" class="clock-container">
     <div class="clock-title">Local Time</div>
     <div id="clock" class="clock"></div>
+</div>
+
+<div class="progress-tracker-container">
+    <h4 class="progress-tracker-title">Task Progress</h4>
+    <div class="progress-bar">
+        <div class="progress"></div>
+    </div>
+    <div class="progress-info">0 / 0 tasks completed</div>
 </div>
 
 <div class="filter-container">
