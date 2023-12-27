@@ -419,15 +419,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     themeToggleButton.addEventListener('click', function () {
         bodyElement.classList.toggle('dark-mode');
-        // Save the theme preference in local storage
         if (bodyElement.classList.contains('dark-mode')) {
             localStorage.setItem('TodoTheme', 'dark');
-        } else {
+        }
+        else {
             localStorage.setItem('TodoTheme', 'light');
         }
     });
 
-    // Load the theme preference from local storage and apply it
     const savedTheme = localStorage.getItem('TodoTheme');
     if (savedTheme === 'dark') {
         bodyElement.classList.add('dark-mode');
@@ -513,6 +512,5 @@ function updateTimerDisplay() {
     document.getElementById('timer-display').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-// Initialize timer with default value
 resetTimer();
 updateTimerDisplay();
