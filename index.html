@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The ToDo App</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="src/css/style.css" />
+    <script src="src/js/script.js" defer></script>
     <link rel="icon" type="image/x-icon" href="utils/favicon.ico">
 </head>
 
@@ -27,9 +27,9 @@
 
 <button id="sortButton" class="sort-button">Sort by Due Date</button>
 
-<button id="aboutButton" class="about-button">About</button>
-
 <button id="themeToggleButton" class="theme-toggle-button">Toggle Dark Mode</button>
+
+<button id="aboutButton" class="about-button">About</button>
 
 <h6>
     <br /> Instructions:
@@ -76,9 +76,11 @@
         <span>:</span>
         <input type="number" id="timer-seconds" class="timer-input" placeholder="Sec" min="0" max="59">
     </div>
-    <button id="timer-set-button" class="timer-button">Set Timer</button>
-    <button id="timer-start" class="timer-button">Start</button>
-    <button id="timer-reset" class="timer-button">Reset</button>
+    <div id="timer-controls">
+        <button id="timer-set-button" class="timer-button">Set Timer</button>
+        <button id="timer-start" class="timer-button">Start</button>
+        <button id="timer-reset" class="timer-button">Reset</button>
+    </div>
 </div>
 
 <button id="quickAddTask" class="quick-add-btn" title="Quickly add a todo item to your list, which will be marked as important!">Quick Add Task</button>
