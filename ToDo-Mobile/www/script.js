@@ -484,7 +484,7 @@ document.getElementById('dismissTip').addEventListener('click', () => {
 });
 
 document.getElementById('aboutButton').addEventListener('click', function() {
-    window.location.href = 'src/html/about.html';
+    window.location.href = 'about.html';
 });
 
 document.addEventListener('DOMContentLoaded', function () {
