@@ -119,71 +119,113 @@
             color: #ff8000;
         }
 
+        .dark-mode {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .dark-mode h1 {
+            color: #ff66cc;
+        }
+
+        .dark-mode .app p {
+            color: #ffffff;
+        }
+
+        .dark-mode .about-section,
+        .dark-mode .additional-apps-section,
+        .dark-mode .app {
+            background-color: #333;
+            color: #c7c7c7;
+        }
+
+        .dark-mode .back-button,
+        .dark-mode .app button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .dark-mode .highlight {
+            color: #ff8000;
+        }
+
     </style>
 </head>
+
 <body>
-<header>
-    <h1>The <span class="highlight">ToDo</span> App</h1>
-</header>
+    <header>
+        <h1>The <span class="highlight">ToDo</span> App</h1>
+    </header>
 
-<section class="about-section" style="margin-bottom: 100px">
-    <p>
-        The ToDo App is a simple, user-friendly application designed to help you manage your daily tasks effectively.
-        With intuitive controls and a clear, distraction-free interface, the app makes it easy to focus on what's important.
-    </p>
-    <p>
-        Highlights of The ToDo App include:
-    <ul>
-        <li>Easy addition and management of tasks.</li>
-        <li>Editable due dates for each task.</li>
-        <li>Sorting tasks by priority or due date.</li>
-        <li>A sleek, user-friendly interface with light and dark modes.</li>
-        <li>Local storage of tasks for privacy and convenience.</li>
-    </ul>
-    <section class="additional-apps-section">
-        <h2>Explore Our Other Apps</h2>
+    <section class="about-section" style="margin-bottom: 100px">
+        <p>
+            The ToDo App is a simple, user-friendly application designed to help you manage your daily tasks effectively.
+            With intuitive controls and a clear, distraction-free interface, the app makes it easy to focus on what's important.
+        </p>
+        <p>
+            Highlights of The ToDo App include:
+        <ul>
+            <li>Easy addition and management of tasks.</li>
+            <li>Editable due dates for each task.</li>
+            <li>Sorting tasks by priority or due date.</li>
+            <li>A sleek, user-friendly interface with light and dark modes.</li>
+            <li>Local storage of tasks for privacy and convenience.</li>
+        </ul>
+        <section class="additional-apps-section">
+            <h2>Explore Our Other Apps</h2>
 
-        <div class="app-container">
-            <div class="app">
-                <p>Discover a world of movies with <strong>The MovieVerse App</strong>, your ultimate guide to the cinematic universe.</p>
-                <button onclick="window.location.href='https://hoangsonww.github.io/The-MovieVerse-Database/';">Visit The MovieVerse</button>
+            <div class="app-container">
+                <div class="app">
+                    <p>Discover a world of movies with <strong>The MovieVerse App</strong>, your ultimate guide to the cinematic universe.</p>
+                    <button style="font: inherit" onclick="window.location.href='https://hoangsonww.github.io/The-MovieVerse-Database/';">Visit The MovieVerse</button>
+                </div>
+
+                <div class="app">
+                    <p>Delve into delightful recipes and cuisines with <strong>RecipeGenie App</strong>, your ultimate recipe database.</p>
+                    <button style="font: inherit" onclick="window.location.href='https://hoangsonww.github.io/RecipeGenie-App/';">Visit RecipeGenie</button>
+                </div>
+
+                <div class="app">
+                    <p>Organize your thoughts and tasks effectively with the simple yet intuitive <strong>StickyNotes App</strong>.</p>
+                    <button style="font: inherit" onclick="window.location.href='https://hoangsonww.github.io/The-StickyNotes-App/';">Visit StickyNotes</button>
+                </div>
+
+                <div class="app">
+                    <p>Stay informed about the weather with <strong>WeatherMate App</strong>, your personal weather forecasting assistant.</p>
+                    <button style="font: inherit" onclick="window.location.href='https://hoangsonww.github.io/WeatherMate-App/';">Visit WeatherMate</button>
+                </div>
+
+                <div class="app">
+                    <p>Efficiently plan and manage your events with <strong>EventHorizon App</strong>, your ultimate event organizer.</p>
+                    <button style="font: inherit" onclick="window.location.href='https://hoangsonww.github.io/The-Event-Horizon-App/';">Visit EventHorizon</button>
+                </div>
             </div>
-
-            <div class="app">
-                <p>Delve into delightful recipes and cuisines with <strong>RecipeGenie App</strong>, your ultimate recipe database.</p>
-                <button onclick="window.location.href='https://hoangsonww.github.io/RecipeGenie-App/';">Visit RecipeGenie</button>
-            </div>
-
-            <div class="app">
-                <p>Organize your thoughts and tasks effectively with the simple yet intuitive <strong>StickyNotes App</strong>.</p>
-                <button onclick="window.location.href='https://hoangsonww.github.io/The-StickyNotes-App/';">Visit StickyNotes</button>
-            </div>
-
-            <div class="app">
-                <p>Stay informed about the weather with <strong>WeatherMate App</strong>, your personal weather forecasting assistant.</p>
-                <button onclick="window.location.href='https://hoangsonww.github.io/WeatherMate-App/';">Visit WeatherMate</button>
-            </div>
-
-            <div class="app">
-                <p>Efficiently plan and manage your events with <strong>EventHorizon App</strong>, your ultimate event organizer.</p>
-                <button onclick="window.location.href='https://hoangsonww.github.io/The-Event-Horizon-App/';">Visit EventHorizon</button>
-            </div>
-        </div>
+        </section>
+        <p style="margin-top: 30px">
+            This app was created with the vision of streamlining task management and boosting productivity.
+            Whether you're a student, a professional, or anyone in between, The ToDo App is tailored to fit your organizational needs.
+        </p>
+        <p>
+            Future updates aim to introduce synchronization across devices, sharing capabilities, reminders, and more customization options.
+        </p>
+        <p>
+            © 2023 David Nguyen. All rights reserved.
+            Your tasks, your way - experience the ultimate simplicity and efficiency with The ToDo App.
+        </p>
     </section>
-    <p style="margin-top: 30px">
-        This app was created with the vision of streamlining task management and boosting productivity.
-        Whether you're a student, a professional, or anyone in between, The ToDo App is tailored to fit your organizational needs.
-    </p>
-    <p>
-        Future updates aim to introduce synchronization across devices, sharing capabilities, reminders, and more customization options.
-    </p>
-    <p>
-        © 2023 David Nguyen. All rights reserved.
-        Your tasks, your way - experience the ultimate simplicity and efficiency with The ToDo App.
-    </p>
-</section>
 
-<button onclick="window.location.href='../../index.html';" class="back-button">Back to Main Page</button>
+    <button onclick="window.location.href='../../index.html';" class="back-button">Back to Main Page</button>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const bodyElement = document.body;
+
+        const savedTheme = localStorage.getItem('TodoTheme');
+        if (savedTheme === 'dark') {
+          bodyElement.classList.add('dark-mode');
+        }
+      });
+    </script>
 
 </body>
 

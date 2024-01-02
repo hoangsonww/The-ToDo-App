@@ -401,7 +401,7 @@ function toggleTodoByText(text) {
 }
 
 const toggleButton = document.createElement("button");
-toggleButton.innerText = "-";
+toggleButton.innerText = "+";
 toggleButton.className = "toggle-chat";
 toggleButton.title="Minimize/Maximize Chatbot";
 toggleButton.onclick = function() {

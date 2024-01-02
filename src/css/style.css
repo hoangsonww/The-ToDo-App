@@ -233,7 +233,7 @@ ul {
 }
 
 .clock-container {
-    position: absolute;
+    position: fixed;
     top: 10px;
     right: 10px;
     background-color: #fff;
@@ -242,6 +242,7 @@ ul {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     font-weight: 600;
+    color: black;
 }
 
 .clock-container:hover {
@@ -472,7 +473,7 @@ h1 {
 
 .dark-mode {
     background-color: #1a1a1a;
-    color: #c7c7c7;
+    color: black;
 }
 
 .dark-mode h1 {
@@ -489,6 +490,15 @@ h1 {
 
 .dark-mode .todos li {
     border-top: 1px solid #555;
+    color: white;
+}
+
+.dark-mode .toggle-chat {
+    background-color: #777;
+}
+
+.dark-mode .toggle-chat:hover {
+    background-color: #555;
 }
 
 .dark-mode .chatbot {
@@ -613,7 +623,7 @@ h1 {
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    background-color: #f3f4f6;
+    background-color: #ffffff;
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -649,7 +659,7 @@ h1 {
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    background-color: #f3f4f6;
+    background-color: #ffffff;
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
