@@ -606,7 +606,7 @@ h1 {
     display: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 828px) {
     .mood-tracker-container,
     .chatbot,
     .clock-container,

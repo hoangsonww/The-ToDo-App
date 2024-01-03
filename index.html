@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
+    <link rel="manifest" href="manifest.json">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="The ToDo App helps you manage tasks efficiently. Organize, track, and complete your daily tasks with ease. Features include due date setting, dark mode, and progress tracking.">
     <meta name="keywords" content="to-do list, task manager, productivity app, organize tasks, reminder app, due date tracker, dark mode, progress tracking">
@@ -26,99 +27,100 @@
     <link rel="stylesheet" href="src/css/style.css" />
     <script src="src/js/script.js" defer></script>
     <link rel="icon" type="image/x-icon" href="utils/favicon.ico">
-    <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
 
-<h1>The <span class="highlight">ToDo</span> App</h1>
+    <a style="cursor: pointer; text-decoration: none" href="index.html">
+        <h1>The <span class="highlight">ToDo</span> App</h1>
+    </a>
 
-<br>
+    <br>
 
-<form id="form" style="margin-bottom: 10px">
-    <div class="form-container">
-        <input type="text" id="input" class="input" placeholder="Enter your todo here..." autocomplete="off" title="Enter the title for your todo, then press enter or click the POST button to add it!" />
-        <input placeholder="Add a due date for your todo" type="date" id="dueDate" class="due-date-input" style="cursor: pointer" title="Add a due date for your todo list item (Optional)"/>
-        <button id="postButton" title="Press enter or click this button to add this todo item!">POST</button>
+    <form id="form" style="margin-bottom: 10px">
+        <div class="form-container">
+            <input type="text" id="input" class="input" placeholder="Enter your todo here..." autocomplete="off" title="Enter the title for your todo, then press enter or click the POST button to add it!" />
+            <input placeholder="Add a due date for your todo" type="date" id="dueDate" class="due-date-input" style="cursor: pointer; font: inherit" title="Add a due date for your todo list item (Optional)"/>
+            <button id="postButton" title="Press enter or click this button to add this todo item!">POST</button>
+        </div>
+        <ul class="todos" id="todos" title="Click on this todo item to toggle it as complete!"></ul>
+    </form>
+
+    <button id="sortButton" class="sort-button">Sort by Due Date</button>
+
+    <button id="themeToggleButton" class="theme-toggle-button">Toggle Dark Mode</button>
+
+    <button id="aboutButton" class="about-button">About</button>
+
+    <h6>
+        <br /> Instructions:
+        <br /> Left click on any todo to toggle complete.
+        <br /> Ctrl+Click on any todo to mark as high priority.
+        <br /> Click on the trash can to delete the todo.
+        <br /> Create a todo by entering its title then pressing enter.
+        <br /> The todo will always remain on your screen as long as you do not delete it.
+        <br /> You can also edit the todo at anytime!
+        <br />
+        <br /> Created with Love by Son (David) Nguyen in 2023.
+    </h6>
+
+    <div class="chatbot">
+        <div class="chat-messages"></div>
+        <input type="text" style="font: inherit" placeholder="Begin chatting with your assistant..." class="chat-input">
     </div>
-    <ul class="todos" id="todos" title="Click on this todo item to toggle it as complete!"></ul>
-</form>
 
-<button id="sortButton" class="sort-button">Sort by Due Date</button>
-
-<button id="themeToggleButton" class="theme-toggle-button">Toggle Dark Mode</button>
-
-<button id="aboutButton" class="about-button">About</button>
-
-<h6>
-    <br /> Instructions:
-    <br /> Left click on any todo to toggle complete.
-    <br /> Ctrl+Click on any todo to mark as high priority.
-    <br /> Click on the trash can to delete the todo.
-    <br /> Create a todo by entering its title then pressing enter.
-    <br /> The todo will always remain on your screen as long as you do not delete it.
-    <br /> You can also edit the todo at anytime!
-    <br />
-    <br /> Created with Love by Son (David) Nguyen in 2023.
-</h6>
-
-<div class="chatbot">
-    <div class="chat-messages"></div>
-    <input type="text" placeholder="Begin chatting with your assistant..." class="chat-input">
-</div>
-
-<div id="clock-container" class="clock-container" style="background-color: white; color: black">
-    <div class="clock-title" style="color: black">Local Time</div>
-    <div id="clock" class="clock"></div>
-</div>
-
-<div class="progress-tracker-container">
-    <h4 class="progress-tracker-title">Task Progress</h4>
-    <div class="progress-bar">
-        <div class="progress"></div>
+    <div id="clock-container" class="clock-container" style="background-color: white; color: black">
+        <div class="clock-title" style="color: black">Local Time</div>
+        <div id="clock" class="clock"></div>
     </div>
-    <div class="progress-info">0 / 0 tasks completed</div>
-</div>
 
-<div class="filter-container">
-    <h4 class="filter-title">Filter Tasks</h4>
-    <button id="filterAll" class="filter-btn">All</button>
-    <button id="filterActive" class="filter-btn">Active</button>
-    <button id="filterCompleted" class="filter-btn">Completed</button>
-</div>
-
-<div class="focus-timer-container">
-    <h4 class="timer-title">Focus Timer</h4>
-    <div id="timer-display" class="timer-display">25:00</div>
-    <div class="timer-set">
-        <input type="number" id="timer-minutes" class="timer-input" placeholder="Min" min="0" max="60">
-        <span>:</span>
-        <input type="number" id="timer-seconds" class="timer-input" placeholder="Sec" min="0" max="59">
+    <div class="progress-tracker-container">
+        <h4 class="progress-tracker-title">Task Progress</h4>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div class="progress-info">0 / 0 tasks completed</div>
     </div>
-    <div id="timer-controls">
-        <button id="timer-set-button" class="timer-button">Set Timer</button>
-        <button id="timer-start" class="timer-button">Start</button>
-        <button id="timer-reset" class="timer-button">Reset</button>
+
+    <div class="filter-container">
+        <h4 class="filter-title">Filter Tasks</h4>
+        <button id="filterAll" style="font: inherit" class="filter-btn">All</button>
+        <button id="filterActive" style="font: inherit" class="filter-btn">Active</button>
+        <button id="filterCompleted" style="font: inherit" class="filter-btn">Completed</button>
     </div>
-</div>
 
-<button id="quickAddTask" class="quick-add-btn" title="Quickly add a todo item to your list, which will be marked as important!">Quick Add Task</button>
+    <div class="focus-timer-container">
+        <h4 class="timer-title">Focus Timer</h4>
+        <div id="timer-display" class="timer-display">25:00</div>
+        <div class="timer-set">
+            <input type="number" id="timer-minutes" class="timer-input" placeholder="Min" min="0" max="60">
+            <span>:</span>
+            <input type="number" id="timer-seconds" class="timer-input" placeholder="Sec" min="0" max="59">
+        </div>
+        <div id="timer-controls">
+            <button id="timer-set-button" style="font: inherit" class="timer-button">Set Timer</button>
+            <button id="timer-start" style="font: inherit" class="timer-button">Start</button>
+            <button id="timer-reset" style="font: inherit" class="timer-button">Reset</button>
+        </div>
+    </div>
 
-<div class="mood-tracker-container" title="How are you doing mentally? See some tips here based on your current mood!">
-    <h4 class="mood-tips-title">Mental Health Tips:</h4>
-    <label for="moodSelect" class="mood-tracker-label">Mood:</label>
-    <select id="moodSelect" class="mood-select">
-        <option value="Happy">Happy</option>
-        <option value="Motivated">Motivated</option>
-        <option value="Stressed">Stressed</option>
-        <option value="Neutral">Neutral</option>
-        <option value="Sad">Sad</option>
-    </select>
-</div>
-<div id="moodTipsContainer" class="mood-tips-container">
-    <p id="moodTip" class="mood-tip"></p>
-    <button id="dismissTip" class="dismiss-tip-btn">Dismiss</button>
-</div>
+    <button id="quickAddTask" class="quick-add-btn" style="font: inherit" title="Quickly add a todo item to your list, which will be marked as important!">Quick Add Task</button>
+
+    <div class="mood-tracker-container" title="How are you doing mentally? See some tips here based on your current mood!">
+        <h4 class="mood-tips-title">Mental Health Tips:</h4>
+        <label for="moodSelect" class="mood-tracker-label">Mood:</label>
+        <select id="moodSelect" class="mood-select">
+            <option value="Happy">Happy</option>
+            <option value="Motivated">Motivated</option>
+            <option value="Stressed">Stressed</option>
+            <option value="Neutral">Neutral</option>
+            <option value="Sad">Sad</option>
+        </select>
+    </div>
+    <div id="moodTipsContainer" class="mood-tips-container">
+        <p id="moodTip" class="mood-tip"></p>
+        <button id="dismissTip" class="dismiss-tip-btn">Dismiss</button>
+    </div>
 
 </body>
 </html>
