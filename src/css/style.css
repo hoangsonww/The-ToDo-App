@@ -255,6 +255,25 @@ ul {
     margin-bottom: 5px;
 }
 
+#sortButton {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 23px;
+    align-self: center;
+}
+
+#sortButton:hover {
+    background-color: #367c39;
+    transform: translateY(-2px);
+}
+
 .sort-button {
     margin: 10px;
     padding: 5px 10px;
