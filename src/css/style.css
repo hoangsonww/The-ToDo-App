@@ -637,6 +637,12 @@ h1 {
     }
 }
 
+@media (max-width: 828px) {
+    .mood-tips-container {
+        display: none;
+    }
+}
+
 .progress-tracker-container {
     position: fixed;
     left: 10px;
