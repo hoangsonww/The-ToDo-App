@@ -177,7 +177,7 @@ ul {
 }
 
 .chat-messages div:nth-child(even) {
-    background-color: #c4c4ff;
+    background-color: #a6e269;
     align-self: flex-start;
     margin-left: 10%;
 }
@@ -186,7 +186,7 @@ ul {
     width: 100%;
     padding: 10px;
     border: none;
-    background-color: #534caf;
+    background-color: #4CAF50;
     color: white;
     outline: none;
     border-top: 1px solid #ccc;
@@ -197,10 +197,10 @@ ul {
 }
 
 .chat-header {
-    background-color: #534caf;
+    background-color: #4CAF50;
     color: white;
     padding: 10px;
-    border-bottom: 1px solid #403890;
+    border-bottom: 1px solid #4CAF50;
     font-size: 1.5rem;
     text-align: center;
 }
@@ -211,7 +211,7 @@ ul {
 }
 
 .toggle-chat {
-    background-color: #534caf;
+    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 50%;
@@ -230,7 +230,7 @@ ul {
 }
 
 .toggle-chat:hover {
-    background-color: #403890;
+    background-color: #367c39;
 }
 
 .clock-container {
