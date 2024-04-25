@@ -2,8 +2,6 @@
 
 Welcome to The ToDo App - your simple, elegant solution for daily task management. This app is designed to help you keep track of your tasks with an intuitive and distraction-free user interface.
 
----
-
 ## User Interface
 
 <p align="center" style="cursor: pointer">
