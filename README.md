@@ -4,6 +4,12 @@ Welcome to The ToDo App - your simple, elegant solution for daily task managemen
 
 ---
 
+## User Interface
+
+<p align="center" style="cursor: pointer">
+    <img src="utils/todoUI.png" alt="The ToDo App Interface" width="100%"/>
+</p>
+
 ## Features
 
 - **Simple Task Management**: Add, edit, and delete your tasks with just a few clicks.
