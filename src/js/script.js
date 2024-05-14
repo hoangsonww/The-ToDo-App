@@ -563,6 +563,7 @@ document.getElementById('timer-reset').addEventListener('click', function() {
 const stopTimerButton = document.createElement('button');
 stopTimerButton.id = 'timer-stop';
 stopTimerButton.textContent = 'Pause';
+stopTimerButton.style.font = 'inherit';
 stopTimerButton.className = 'timer-button';
 stopTimerButton.addEventListener('click', function() {
     clearInterval(timerInterval);
