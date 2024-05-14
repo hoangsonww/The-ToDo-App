@@ -217,7 +217,7 @@ chatInput.addEventListener("keydown", (e) => {
         setTimeout(() => {
             const response = getElizaResponse(question);
             const elizaMsgElem = document.createElement("div");
-            elizaMsgElem.innerText = `Eliza: ${response}`;
+            elizaMsgElem.innerText = `Chatbot: ${response}`;
             chatMessages.appendChild(elizaMsgElem);
         }, 1000);
 
@@ -228,55 +228,74 @@ chatInput.addEventListener("keydown", (e) => {
 function getElizaResponse(question) {
     question = question.toLowerCase();
 
-    if (question.startsWith("add todo ")) {
-        const todoText = question.substring("add todo ".length);
-        addTodo({ text: todoText });
-        return "Added the todo: " + todoText;
+    const actions = [
+        { pattern: /^add todo (.+)$/, handler: handleAddTodo },
+        { pattern: /^delete todo (.+)$/, handler: handleDeleteTodo },
+        { pattern: /^toggle todo (.+)$/, handler: handleToggleTodo },
+        { pattern: /^(help|how to use)$/, handler: getChatbotInstructions },
+        { pattern: /^start timer$/, handler: handleStartTimer },
+        { pattern: /^(pause timer|stop timer)$/, handler: handlePauseTimer },
+        { pattern: /^set timer (.+)$/, handler: handleSetTimer },
+        { pattern: /^toggle dark mode$/, handler: handleToggleDarkMode },
+        { pattern: /^toggle light mode$/, handler: handleToggleLightMode }
+    ];
+
+    for (let i = 0; i < actions.length; i++) {
+        const match = question.match(actions[i].pattern);
+        if (match) {
+            return actions[i].handler(match);
+        }
     }
 
-    if (question.startsWith("delete todo ")) {
-        const todoText = question.substring("delete todo ".length);
-        const deleted = deleteTodoByText(todoText);
-        return deleted ? `Deleted the todo: ${todoText}` : `Todo not found: ${todoText}`;
-    }
+    return getPredefinedResponse(question);
+}
 
-    if (question.startsWith("toggle todo ")) {
-        const todoText = question.substring("toggle todo ".length);
-        const toggled = toggleTodoByText(todoText);
-        return toggled ? `Toggled the todo: ${todoText}` : `Todo not found: ${todoText}`;
-    }
+function handleAddTodo(match) {
+    const todoText = match[1];
+    addTodo({ text: todoText });
+    return "Added the todo: " + todoText;
+}
 
-    if (question === "help" || question === "how to use") {
-        return getChatbotInstructions();
-    }
+function handleDeleteTodo(match) {
+    const todoText = match[1];
+    const deleted = deleteTodoByText(todoText);
+    return deleted ? `Deleted the todo: ${todoText}` : `Todo not found: ${todoText}`;
+}
 
-    if (question.startsWith("start timer")) {
-        startTimer();
-        return "Timer started.";
-    }
+function handleToggleTodo(match) {
+    const todoText = match[1];
+    const toggled = toggleTodoByText(todoText);
+    return toggled ? `Toggled the todo: ${todoText}` : `Todo not found: ${todoText}`;
+}
 
-    if (question.startsWith("pause timer") || question.startsWith("stop timer")) {
-        clearInterval(timerInterval);
-        timerRunning = false;
-        toggleTimerButtons();
-        return "Timer paused.";
-    }
+function handleStartTimer() {
+    startTimer();
+    return "Timer started.";
+}
 
-    if (question.startsWith("set timer ")) {
-        const time = question.substring("set timer ".length);
-        return setTimer(time);
-    }
+function handlePauseTimer() {
+    clearInterval(timerInterval);
+    timerRunning = false;
+    toggleTimerButtons();
+    return "Timer paused.";
+}
 
-    if (question === "toggle dark mode") {
-        toggleDarkMode();
-        return "Dark mode toggled.";
-    }
+function handleSetTimer(match) {
+    const time = match[1];
+    return setTimer(time);
+}
 
-    if (question === "toggle light mode") {
-        toggleDarkMode();
-        return "Light mode toggled.";
-    }
+function handleToggleDarkMode() {
+    toggleDarkMode();
+    return "Dark mode toggled.";
+}
 
+function handleToggleLightMode() {
+    toggleDarkMode();
+    return "Light mode toggled.";
+}
+
+function getPredefinedResponse(question) {
     const responses = [
         { pattern: /hello|hi|hey/, response: "Hello! How can I assist you today?" },
         { pattern: /add todo|new todo/, response: "To add a new todo, type in the task and due date, then press Enter or click the Add button." },
