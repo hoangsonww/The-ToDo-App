@@ -72,8 +72,8 @@ function addTodo(todo) {
     let todoDueDate = dueDateInput.value;
 
     if (todo) {
-        todoText = todo.text;
-        todoDueDate = todo.dueDate;
+        todoText = todo?.text;
+        todoDueDate = todo?.dueDate;
     }
 
     if (todoText) {
@@ -144,7 +144,7 @@ function addTodo(todo) {
             });
         });
 
-        if (todo && todo.highPriority) {
+        if (todo?.highPriority) {
             todoEl.classList.add("high-priority");
         }
 
