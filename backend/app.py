@@ -28,7 +28,17 @@ class User(db.Model):
 
 @app.route('/add_todo', methods=['POST'])
 def add_todo():
-    pass
+    # Get the data from the request
+    data = request.get_json()
+    text = data['text']
+    due_date = data['due_date']
+    user_id = data['user_id']
+    # Create a new ToDoItem with the data
+    new_todo = ToDoItem(text=text, due_date=due_date, user_id=user_id)
+    # Add the new ToDoItem to the database
+    db.session.add(new_todo)
+    db.session.commit()
+    return 'Todo created', 201
 
 if __name__ == '__main__':
     db.create_all()
