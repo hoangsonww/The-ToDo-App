@@ -11,9 +11,9 @@ class DueDatePredictor:
     def train(self, data):
         X = data.drop(columns=['due_date'])
         y = data['due_date']
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-        self.model.fit(X_train, y_train)
-        predictions = self.model.predict(X_test)
+        x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+        self.model.fit(x_train, y_train)
+        predictions = self.model.predict(x_test)
         print("Mean Squared Error:", mean_squared_error(y_test, predictions))
 
     def predict_due_date(self, features):

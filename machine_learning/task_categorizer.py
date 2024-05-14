@@ -10,11 +10,11 @@ class TaskCategorizer:
         self.model = MultinomialNB()
 
     def train(self, data):
-        X_train, X_test, y_train, y_test = train_test_split(data['task'], data['category'], test_size=0.2)
-        X_train_counts = self.vectorizer.fit_transform(X_train)
-        self.model.fit(X_train_counts, y_train)
-        X_test_counts = self.vectorizer.transform(X_test)
-        predictions = self.model.predict(X_test_counts)
+        x_train, x_test, y_train, y_test = train_test_split(data['task'], data['category'], test_size=0.2)
+        x_train_counts = self.vectorizer.fit_transform(x_train)
+        self.model.fit(x_train_counts, y_train)
+        x_test_counts = self.vectorizer.transform(x_test)
+        predictions = self.model.predict(x_test_counts)
         print("Accuracy:", accuracy_score(y_test, predictions))
 
     def categorize(self, task):
