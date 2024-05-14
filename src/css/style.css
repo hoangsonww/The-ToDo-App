@@ -20,6 +20,9 @@ h1 {
     font-size: 5rem;
     text-align: center;
     opacity: 0.5;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
 }
 
 form {
@@ -62,12 +65,8 @@ form {
     width: 100%;
     padding: 10px;
     border-radius: 3px;
-    border: 1px solid #ddd;
-}
-
-.input,
-.due-date-input {
     margin: 0;
+    border: 1px solid #ddd;
 }
 
 .input {
@@ -244,6 +243,7 @@ ul {
     text-align: center;
     font-weight: 600;
     color: black;
+    border: 1px solid #ddd;
 }
 
 .clock-container:hover {
@@ -273,12 +273,6 @@ ul {
 #sortButton:hover {
     background-color: #367c39;
     transform: translateY(-2px);
-}
-
-.sort-button {
-    margin: 10px;
-    padding: 5px 10px;
-    cursor: pointer;
 }
 
 .trash-can {
@@ -349,12 +343,6 @@ ul {
 
 #form {
     width: auto;
-    max-width: 600px;
-}
-
-h1 {
-    margin-top: 20px;
-    width: 100%;
     max-width: 600px;
 }
 
@@ -449,6 +437,7 @@ h1 {
     transition: background-color 0.3s, box-shadow 0.3s;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     outline: none;
+    margin: 10px;
 }
 
 .sort-button:hover {
@@ -519,12 +508,6 @@ h1 {
     border: 1px solid #555;
 }
 
-.clock-container {
-    background-color: #fff;
-    color: black;
-    border: 1px solid #ddd;
-}
-
 .dark-mode .clock-container {
     background-color: #333;
     color: white;
@@ -576,10 +559,6 @@ h1 {
 .dark-mode .chat-header {
     background-color: #666;
     border-bottom: 1px solid #888;
-}
-
-.dark-mode .clock-container {
-    background-color: #333;
 }
 
 .dark-mode .filter-container {

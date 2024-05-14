@@ -609,7 +609,7 @@ function updateTimer() {
 }
 
 function playSound() {
-    var audio = new Audio('timer-sound.mp3');
+    let audio = new Audio('timer-sound.mp3');
     audio.play();
 }
 

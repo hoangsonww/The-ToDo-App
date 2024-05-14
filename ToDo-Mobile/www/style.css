@@ -20,6 +20,9 @@ h1 {
     font-size: 5rem;
     text-align: center;
     opacity: 0.5;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
 }
 
 form {
@@ -62,12 +65,8 @@ form {
     width: 100%;
     padding: 10px;
     border-radius: 3px;
-    border: 1px solid #ddd;
-}
-
-.input,
-.due-date-input {
     margin: 0;
+    border: 1px solid #ddd;
 }
 
 .input {
@@ -122,6 +121,7 @@ h6 {
     color: #ab5a00;
     margin-top: 3rem;
     text-align: center;
+    font-size: 12.9px;
 }
 
 .highlight {
@@ -176,7 +176,7 @@ ul {
 }
 
 .chat-messages div:nth-child(even) {
-    background-color: #c4c4ff;
+    background-color: #a6e269;
     align-self: flex-start;
     margin-left: 10%;
 }
@@ -185,7 +185,7 @@ ul {
     width: 100%;
     padding: 10px;
     border: none;
-    background-color: #534caf;
+    background-color: #4CAF50;
     color: white;
     outline: none;
     border-top: 1px solid #ccc;
@@ -196,10 +196,10 @@ ul {
 }
 
 .chat-header {
-    background-color: #534caf;
+    background-color: #4CAF50;
     color: white;
     padding: 10px;
-    border-bottom: 1px solid #403890;
+    border-bottom: 1px solid #4CAF50;
     font-size: 1.5rem;
     text-align: center;
 }
@@ -210,7 +210,7 @@ ul {
 }
 
 .toggle-chat {
-    background-color: #534caf;
+    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 50%;
@@ -229,11 +229,11 @@ ul {
 }
 
 .toggle-chat:hover {
-    background-color: #403890;
+    background-color: #367c39;
 }
 
 .clock-container {
-    position: absolute;
+    position: fixed;
     top: 10px;
     right: 10px;
     background-color: #fff;
@@ -242,6 +242,8 @@ ul {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     font-weight: 600;
+    color: black;
+    border: 1px solid #ddd;
 }
 
 .clock-container:hover {
@@ -254,10 +256,23 @@ ul {
     margin-bottom: 5px;
 }
 
-.sort-button {
-    margin: 10px;
-    padding: 5px 10px;
+#sortButton {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
     cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 23px;
+    align-self: center;
+}
+
+#sortButton:hover {
+    background-color: #367c39;
+    transform: translateY(-2px);
 }
 
 .trash-can {
@@ -328,12 +343,6 @@ ul {
 
 #form {
     width: auto;
-    max-width: 600px;
-}
-
-h1 {
-    margin-top: 20px;
-    width: 100%;
     max-width: 600px;
 }
 
@@ -428,6 +437,7 @@ h1 {
     transition: background-color 0.3s, box-shadow 0.3s;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     outline: none;
+    margin: 10px;
 }
 
 .sort-button:hover {
@@ -472,7 +482,7 @@ h1 {
 
 .dark-mode {
     background-color: #1a1a1a;
-    color: #c7c7c7;
+    color: black;
 }
 
 .dark-mode h1 {
@@ -489,6 +499,33 @@ h1 {
 
 .dark-mode .todos li {
     border-top: 1px solid #555;
+    color: white;
+}
+
+.dark-mode .progress-tracker-container {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+}
+
+.dark-mode .clock-container {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+}
+
+.dark-mode .focus-timer-container {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+}
+
+.dark-mode .toggle-chat {
+    background-color: #777;
+}
+
+.dark-mode .toggle-chat:hover {
+    background-color: #555;
 }
 
 .dark-mode .chatbot {
@@ -522,10 +559,6 @@ h1 {
 .dark-mode .chat-header {
     background-color: #666;
     border-bottom: 1px solid #888;
-}
-
-.dark-mode .clock-container {
-    background-color: #333;
 }
 
 .dark-mode .filter-container {
@@ -596,7 +629,7 @@ h1 {
     display: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 828px) {
     .mood-tracker-container,
     .chatbot,
     .clock-container,
@@ -608,12 +641,18 @@ h1 {
     }
 }
 
+@media (max-width: 828px) {
+    .mood-tips-container {
+        display: none;
+    }
+}
+
 .progress-tracker-container {
     position: fixed;
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    background-color: #f3f4f6;
+    background-color: #ffffff;
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -649,7 +688,7 @@ h1 {
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    background-color: #f3f4f6;
+    background-color: #ffffff;
     border-radius: 10px;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
