@@ -240,10 +240,10 @@ function getElizaResponse(question) {
         { pattern: /^toggle light mode$/, handler: handleToggleLightMode }
     ];
 
-    for (let i = 0; i < actions.length; i++) {
-        const match = question.match(actions[i].pattern);
+    for (const action of actions) {
+        const match = question.match(action.pattern);
         if (match) {
-            return actions[i].handler(match);
+            return action.handler(match);
         }
     }
 
@@ -348,16 +348,17 @@ function getPredefinedResponse(question) {
         { pattern: /.*/, response: "I'm not sure about that. Can you be more specific or ask another question?" }
     ];
 
-    for (let i = 0; i < responses.length; i++) {
-        let match = question.match(responses[i].pattern);
+    for (const response of responses) {
+        const match = question.match(response.pattern);
         if (match) {
             if (match[1] && match[2]) {
                 addNewNote(match[2]);
-                return responses[i].response.replace('{title}', match[1]).replace('{content}', match[2]);
+                return response.response.replace('{title}', match[1]).replace('{content}', match[2]);
             }
-            return responses[i].response;
+            return response.response;
         }
     }
+
     return "Sorry, I didn't get that. Could you please rephrase or ask another question?";
 }
 
