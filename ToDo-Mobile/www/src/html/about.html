@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About The ToDo App</title>
+    <link rel="icon" type="image/x-icon" href="../../utils/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="manifest" href="../../manifest.json">
+    <meta name="theme-color" content="#c9dfff">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H84RS2K80R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-H84RS2K80R');
+    </script>
+    <style>
+        body {
+            background-color: #c9dfff;
+            color: #444;
+            font-family: "Poppins", sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: rgb(255, 0, 233);
+            font-size: 5rem;
+            text-align: center;
+            opacity: 0.5;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .about-section {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .back-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: "Poppins", sans-serif;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .back-button:hover {
+            background-color: #367c39;
+            transform: translateY(-2px) translateX(-50%);
+        }
+
+        .additional-apps-section {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .app-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .app {
+            flex-basis: calc(50% - 10px);
+            max-width: 300px;
+        }
+
+        .app p {
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        .app button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .app button:hover {
+            background-color: #367C39;
+        }
+
+        @media (max-width: 600px) {
+            .app {
+                flex-basis: 100%;
+            }
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .highlight {
+            color: #ff8000;
+        }
+
+        .dark-mode {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .dark-mode h1 {
+            color: #ff66cc;
+        }
+
+        .dark-mode .app p {
+            color: #ffffff;
+        }
+
+        .dark-mode .about-section,
+        .dark-mode .additional-apps-section,
+        .dark-mode .app {
+            background-color: #333;
+            color: #c7c7c7;
+        }
+
+        .dark-mode .back-button,
+        .dark-mode .app button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .dark-mode .highlight {
+            color: #ff8000;
+        }
+
+    </style>
+</head>
+
+<body>
+    
+    <header>
+        <a style="cursor: pointer; text-decoration: none" href="../../index.html">
+            <h1>The <span class="highlight">ToDo</span> App</h1>
+        </a>
+    </header>
+
+    <section class="about-section" style="margin-bottom: 100px">
+        <p>
+            The ToDo App is a simple, lightweight, and user-friendly application designed to help you manage your daily tasks effectively.
+            With intuitive controls and a clear, distraction-free interface, the app makes it easy to focus on what's important.
+        </p>
+        <p>
+            Highlights of The ToDo App include:
+        <ul>
+            <li style="font-size: 18px">Easy addition and management of tasks.</li>
+            <li style="font-size: 18px">Editable due dates for each task.</li>
+            <li style="font-size: 18px">Sorting tasks by priority or due date.</li>
+            <li style="font-size: 18px">A sleek, user-friendly interface with light and dark modes.</li>
+            <li style="font-size: 18px">Local storage of tasks for privacy and convenience.</li>
+        </ul>
+        <section class="additional-apps-section">
+            <h2>Explore Our Other Apps</h2>
+
+            <div class="app-container">
+                <div class="app">
+                    <p>Discover a world of movies with <strong>The MovieVerse App</strong>, your ultimate guide to the cinematic universe.</p>
+                    <button style="font: inherit" onclick="window.location.href='https://hoangsonww.github.io/The-MovieVerse-Database/';">Visit The MovieVerse</button>
+                </div>
+
+                <div class="app">
+                    <p>Delve into delightful recipes and cuisines with <strong>RecipeGenie App</strong>, your ultimate recipe database.</p>
+                    <button style="font: inherit" onclick="window.location.href='https://hoangsonww.github.io/RecipeGenie-App/';">Visit RecipeGenie</button>
+                </div>
+
+                <div class="app">
+                    <p>Organize your thoughts and tasks effectively with the simple yet intuitive <strong>StickyNotes App</strong>.</p>
+                    <button style="font: inherit" onclick="window.location.href='https://hoangsonww.github.io/The-StickyNotes-App/';">Visit StickyNotes</button>
+                </div>
+
+                <div class="app">
+                    <p>Stay informed about the weather with <strong>WeatherMate App</strong>, your personal weather forecasting assistant.</p>
+                    <button style="font: inherit" onclick="window.location.href='https://hoangsonww.github.io/WeatherMate-App/';">Visit WeatherMate</button>
+                </div>
+
+                <div class="app">
+                    <p>Efficiently plan and manage your events with <strong>EventHorizon App</strong>, your ultimate event organizer.</p>
+                    <button style="font: inherit" onclick="window.location.href='https://hoangsonww.github.io/The-Event-Horizon-App/';">Visit EventHorizon</button>
+                </div>
+            </div>
+        </section>
+        <p style="margin-top: 30px">
+            This app was created with the vision of streamlining task management and boosting productivity.
+            Whether you're a student, a professional, or anyone in between, The ToDo App is tailored to fit your organizational needs.
+            Remember to use a desktop browser for the best experience and to get the most out of the app's features!
+        </p>
+        <div style="height: 20px"></div>
+        <p>
+            Future updates aim to introduce synchronization across devices, sharing capabilities, reminders, and more customization options.
+        </p>
+        <div style="height: 20px"></div>
+        <p>
+            © 2023 David Nguyen. All rights reserved.
+            Your tasks, your way - experience the ultimate simplicity and efficiency with The ToDo App.
+        </p>
+    </section>
+
+    <button onclick="window.location.href='../../index.html';" class="back-button">Back to Main Page</button>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const bodyElement = document.body;
+
+        const savedTheme = localStorage.getItem('TodoTheme');
+        if (savedTheme === 'dark') {
+          bodyElement.classList.add('dark-mode');
+        }
+      });
+    </script>
+
+</body>
+
+</html>

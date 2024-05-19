@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <link rel="icon" type="image/x-icon" href="utils/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H84RS2K80R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-H84RS2K80R');
+    </script>
+    <style>
+        body {
+            background-color: #c9dfff;
+            color: #444;
+            font-family: "Poppins", sans-serif;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 5rem;
+            color: rgb(255, 0, 233);
+            margin: 0;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+
+        a {
+            font-size: 1.2rem;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .dark-mode {
+            background-color: #1a1a1a;
+            color: #c7c7c7;
+        }
+    </style>
+</head>
+<body>
+<h1>404</h1>
+<p>Oops! The page you're looking for doesn't exist.</p>
+<a href="index.html">Back to Home</a>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const bodyElement = document.body;
+    const savedTheme = localStorage.getItem('TodoTheme');
+    if (savedTheme === 'dark') {
+      bodyElement.classList.add('dark-mode');
+    }
+  });
+</script>
+</body>
+</html>
