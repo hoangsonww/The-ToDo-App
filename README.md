@@ -5,7 +5,7 @@ Welcome to The ToDo App - your simple, elegant solution for daily task managemen
 ## User Interface
 
 <p align="center" style="cursor: pointer">
-    <img src="utils/todoUI.png" alt="The ToDo App Interface" width="100%"/>
+    <img src="utils/todoUI.png" alt="The ToDo App Interface" width="100%" style="border-radius: 8px">
 </p>
 
 ## Features
